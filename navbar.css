@@ -12,6 +12,9 @@
   top: 0;
   background-color: #e3f2fd;
  }
+ #pic01{
+  width: 60%;
+ }
   /* Center website */
   .main {
     max-width: 1500px;
