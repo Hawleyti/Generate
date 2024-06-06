@@ -14,14 +14,11 @@
   background-color: #e3f2fd;
  }
 
-#text{
-  height:160px;
+.text{
+  height:140px;
   overflow: scroll;
 }
- #Vertical{
-  width: 250px;
- }
- #pic01{
+ .pic01{
   width: 100%;
  }
 
