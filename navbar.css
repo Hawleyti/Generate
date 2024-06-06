@@ -8,13 +8,23 @@
     font-family: Arial;
   }
  #myBtnContainer{
+  /* position: relative; */
   position: sticky;
   top: 0;
   background-color: #e3f2fd;
  }
- #pic01{
-  width: 60%;
+
+#text{
+  height:160px;
+  overflow: scroll;
+}
+ #Vertical{
+  width: 250px;
  }
+ #pic01{
+  width: 100%;
+ }
+
   /* Center website */
   .main {
     max-width: 1500px;
@@ -72,6 +82,7 @@
     padding: 12px 16px;
     background-color: white;
     cursor: pointer;
+    
   }
   
   .btn:hover {
