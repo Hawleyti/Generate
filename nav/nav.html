@@ -3,36 +3,43 @@
 * {box-sizing: border-box;}
 
 #navbar {
+  /* position: fixed; */
   overflow: hidden;
-  background-color: #e3f2fd;
-  padding: 10px 80px 10px 80px;
+  background-color: #a2d8ff;
+  /* padding: 10px 80px 10px 80px; */
   transition: 0.3s;
   position: fixed;
-  width: 88%;
+  width: 100%;
   top: 0;
   z-index: 99;
+  margin: -7px;
+  /* overflow: visible; */
 }
 
 #navbar a {
   float: left;
   color: black;
   text-align: center;
-  padding: 10px;
+  padding: 18px;
   text-decoration: none;
-  font-size: 16px; 
+  font-size: 18px; 
   line-height: 25px;
   border-radius: 4px;
+  
 }
 
 #navbar #logo {
-  font-size: 30px;
+  font-size: 24px;
   font-weight: bold;
   transition: 0.4s;
+  margin-left: 200px;
 }
 
 #navbar a:hover {
-  background-color: #ddd;
+  background-color: #bee9bd;
   color: black;
+  /* padding: 30px 20px; */
+  
 }
 
 /* #navbar a.active {
@@ -42,7 +49,9 @@
 
 #navbar-right {
   float: right;
+  margin-right: 300px;
 }
+
 
 @media screen and (max-width: 580px) {
   #navbar {

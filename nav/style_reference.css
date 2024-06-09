@@ -7,18 +7,17 @@
     padding: 10px,20px;
     font-family: Arial;
   }
+  h4{
+    text-align: center;
+  }
  #myBtnContainer{
-  position: fixed;
-  /* position: sticky; */
-  top: 57px;
-  /* background-color: #b96e0b; */
+  /* position: relative; */
+  position: sticky;
+  top: 80px;
+  background-color: #e3f2fd;
   float: left;
-  left: 0px;
+  left: 30px;
   width: 150px;
-  height: 800px;
- }
- h4{
-  text-align:center;
  }
 .text{
   height:100px;
@@ -98,7 +97,6 @@ p{
     width: 150px;
     display: block;
     margin: 2px;
-    top: 500px;
   }
   
   .btn:hover{
