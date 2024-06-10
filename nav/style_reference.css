@@ -8,7 +8,8 @@
     font-family: Arial;
   }
   h4{
-    text-align: center;
+    text-align:left;
+    margin-left: 3px;
   }
  #myBtnContainer{
   /* position: relative; */
@@ -24,11 +25,12 @@
   overflow: auto;
 }
 p{
-  height:180px;
-  overflow:auto;
-  margin-top: 5px;
-  background-color: #fbf2fc;
-  padding: 5px 5px;
+  /* height:180px; */
+  /* overflow:auto; */
+  margin-top: -10px;
+  margin-left: 3px;
+  /* background-color: #fbf2fc; */
+  /* padding: 5px 5px; */
 
 }
  .pic01{
@@ -80,6 +82,27 @@ p{
     height: 550px;
     padding: 10px;
     /* overflow: scroll; */
+  }
+
+  .content button{
+    border: none;
+    background-color: rgb(248, 235, 239);
+    padding: 12px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  .content button:hover {
+    background-color: #04AA6D;
+    color: white;
+  }
+  .content a{
+    text-decoration: none;
+    color: black;
   }
   
   /* The "show" class is added to the filtered elements */

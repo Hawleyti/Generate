@@ -23,6 +23,7 @@
 .text{
   height:100px;
   overflow: auto;
+  overflow-x: auto;
 }
 p{
   height:180px;
