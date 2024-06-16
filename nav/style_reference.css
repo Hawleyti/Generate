@@ -94,6 +94,13 @@ p{
     position: relative;
     /* overflow: scroll; */
   }
+  .content2 {
+    background-color: rgb(255, 255, 255);
+    height: 633px;
+    padding: 10px;
+    position: relative;
+    /* overflow: scroll; */
+  }
 
   .content button{
     border: none;
