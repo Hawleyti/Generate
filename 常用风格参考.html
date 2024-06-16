@@ -19,13 +19,13 @@
   <div id="myBtnContainer">
     <h4>常用风格参考</h4>
     <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-    <button class="btn" onclick="filterSelection('Animation_Cartoon')"> 动画卡通类</button>
-    <button class="btn" onclick="filterSelection('sketch')"> 素描风格</button>
-    <button class="btn" onclick="filterSelection('painting')"> 油画风格</button>
-    <button class="btn" onclick="filterSelection('watercolor')"> 水彩风格</button>
+    <button class="btn filter-btn" onclick="filterSelection('Animation_Cartoon')"data-filter="Animation_Cartoon"> 动画卡通类</button>
+    <button class="btn filter-btn" onclick="filterSelection('sketch')"data-filter="sketch"> 素描风格</button>
+    <button class="btn filter-btn" onclick="filterSelection('painting')"data-filter="painting"> 油画风格</button>
+    <button class="btn filter-btn" onclick="filterSelection('watercolor')"data-filter="watercolor"> 水彩风格</button>
     <!-- <button class="btn" onclick="filterSelection('animal')"> 雕塑</button> -->
-    <button class="btn" onclick="filterSelection('Angel')"> 真实风格</button>
-    <button class="btn" onclick="filterSelection('transportation')"> 彩铅</button>
+    <button class="btn filter-btn" onclick="filterSelection('Angel')"data-filter="Angel"> 真实风格</button>
+    <button class="btn filter-btn" onclick="filterSelection('transportation')"data-filter="transportation"> 彩铅</button>
   </div>
 
   <div class="main">
@@ -778,6 +778,19 @@
       if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
     }window.scrollTo(0, 0);
   }
+
+  var btns = document.getElementsByClassName("filter-btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    // 将所有按钮的背景颜色恢复成默认颜色
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].style.backgroundColor = "#ddd";
+    }
+    // 将当前点击的按钮的背景颜色修改为选中颜色
+    this.style.backgroundColor = "#04AA6D";
+    filterSelection(this.getAttribute("data-filter"));
+  });
+}
 </script>    
 </body>
 </html>

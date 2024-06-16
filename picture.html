@@ -21,19 +21,19 @@
   <div id="myBtnContainer">
     <h4>美加AI关键词</h4>
     <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-    <button class="btn" onclick="filterSelection('Jesus')"> 主耶稣</button>
-    <button class="btn" onclick="filterSelection('Cartoon')"> 卡通人物</button>
-    <button class="btn" onclick="filterSelection('people')"> 真实人物</button>
-    <button class="btn" onclick="filterSelection('landscape')"> 风景/花草</button>
-    <button class="btn" onclick="filterSelection('animal')"> 动物</button>
-    <button class="btn" onclick="filterSelection('Angel')"> 天使</button>
-    <button class="btn" onclick="filterSelection('transportation')"> 交通</button>
-    <button class="btn" onclick="filterSelection('architecture')"> 建筑/牌子</button>
-    <button class="btn" onclick="filterSelection('disaster')"> 灾难</button>
-    <button class="btn" onclick="filterSelection('heaven')"> 地狱/天堂</button>
-    <button class="btn" onclick="filterSelection('element')"> 元素</button>
-    <button class="btn" onclick="filterSelection('design')"> 设计</button>
-    <button class="btn" onclick="filterSelection('religion')"> 宗教圣经故事</button>
+    <button class="btn filter-btn" onclick="filterSelection('Jesus')"data-filter="Jesus"> 主耶稣</button>
+    <button class="btn filter-btn" onclick="filterSelection('Cartoon')"data-filter="Cartoon"> 卡通人物</button>
+    <button class="btn filter-btn" onclick="filterSelection('people')"data-filter="people"> 真实人物</button>
+    <button class="btn filter-btn" onclick="filterSelection('landscape')"data-filter="landscape"> 风景/花草</button>
+    <button class="btn filter-btn" onclick="filterSelection('animal')"data-filter="animal"> 动物</button>
+    <button class="btn filter-btn" onclick="filterSelection('Angel')"data-filter="Angel"> 天使</button>
+    <button class="btn filter-btn" onclick="filterSelection('transportation')"data-filter="transportation"> 交通</button>
+    <button class="btn filter-btn" onclick="filterSelection('architecture')"data-filter="architecture"> 建筑/牌子</button>
+    <button class="btn filter-btn" onclick="filterSelection('disaster')"data-filter="disaster"> 灾难</button>
+    <button class="btn filter-btn" onclick="filterSelection('heaven')"data-filter="heaven"> 地狱/天堂</button>
+    <button class="btn filter-btn" onclick="filterSelection('element')"data-filter="element"> 元素</button>
+    <button class="btn filter-btn" onclick="filterSelection('design')" data-filter="design"> 设计</button>
+    <button class="btn filter-btn" onclick="filterSelection('religion')"data-filter="religion"> 宗教圣经故事</button>
   </div>
   
 <div class="main">
@@ -1089,6 +1089,18 @@ function filterSelection(c) {
   }window.scrollTo(0, 0);
 }
 
+var btns = document.getElementsByClassName("filter-btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    // 将所有按钮的背景颜色恢复成默认颜色
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].style.backgroundColor = "#ddd";
+    }
+    // 将当前点击的按钮的背景颜色修改为选中颜色
+    this.style.backgroundColor = "#04AA6D";
+    filterSelection(this.getAttribute("data-filter"));
+  });
+}
 
 </script>
 
