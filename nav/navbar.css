@@ -9,33 +9,26 @@ body {
 }
 #myBtnContainer{
 position: fixed;
-/* position: sticky; */
 top: 57px;
-/* background-color: #b96e0b; */
 float: left;
 left: 0px;
 width: 150px;
 height: 800px;
 }
+
 h4{
 text-align:center;
 }
-/* .text{
-height:100px;
-overflow: auto;
-overflow-x: auto;
-} */
+
 p{
-/* height:80px; */
-/* overflow:auto; */
 margin: 0;
 background-color: #fbf2fc;
 padding: 10px 5px;
-/* display: none; */
 
 }
+
 .pic01{
-width: 63%;
+width: 53%;
 }
 
 /* Center website */
@@ -64,7 +57,8 @@ h1 {
 /* Create three equal columns that floats next to each other */
 .column {
   float: left;
-  width: 19%;
+  width: 16%;
+  /* width: 19%; */
   display: none; /* Hide all elements by default */
   margin: 3px;
   /* background-color: rgb(0, 0, 0); */
@@ -121,7 +115,7 @@ h1 {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  /* z-index: 1; */
   left: 0;
   top: 0;
   width: 100%;
@@ -133,7 +127,7 @@ h1 {
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: #e6e6e6;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
@@ -150,7 +144,7 @@ h1 {
   max-height: 70vh;
   float: left;
   z-index: 2;
-  position: relative;
+  /* position: relative; */
 }
 
 .close {
@@ -189,15 +183,13 @@ text-align: left;
 font-size: 16px;
 /* height: 600px; */
 padding: 25px;
-position: relative;
-left: 10px;
-top:20px;
+position: absolute;
+right: 93px;
+top:10px;
 z-index: 0;
-/* width: 60%; */
+width: 30%;
+height: 94%;
 margin: 10px;
-background-color: #ffffff;
-
-}
-.lick{
+background-color: #ccc1c1;
 
 }

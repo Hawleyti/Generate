@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 60%;
+        }
+        
+        th, td {
+          text-align: left;
+          padding: 8px;
+          border: 1px solid #ddd;
+        }
+        
+        th {
+          background-color: #eb2727;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+        
+        /* 添加水平线条 */
+        tr:not(:first-child) {
+          border-top: 1px solid #ddd;
+        }
+        
+        /* 添加垂直线条 */
+        td:not(:last-child) {
+          border-right: 1px solid #f35555;
+        }
+    </style>
+</head>
+
+<body>
+    <p>这是一个包含表格的段落：</p>
+    <table>
+        <tr>
+          <td>制作人员</td>
+          <td>罗亮</td>
+        </tr>
+        <tr>
+          <td>日期</td>
+          <td>2024年6月18日</td>
+        </tr>
+        <tr>
+          <td>制作软件</td>
+          <td>copilot</td>
+        </tr>
+        <tr>
+            <td colspan="2">写实风格的主耶稣全身像，侧脸微笑，皮肤毛孔清晰，眼睛棕色明亮慈爱。白色长袍，麻布腰带，棉麻纹理。画面细腻柔和，全景构图，背景为山脉、湖泊或海洋，加强光线和阴影效果，耶稣的头发披肩，背景为傍晚的麦田，远景。</td>
+        </tr>
+    </table>
+</body>
+</html>
