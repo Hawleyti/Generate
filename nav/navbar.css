@@ -21,23 +21,24 @@ text-align:center;
 }
 
 p{
-margin: 0;
+margin: 0 auto;
 background-color: #fbf2fc;
 padding: 10px 5px;
+max-width: 280px;
+font-size: 16px;
+/* float: left; */
+
+/* position: absolute;
+left: 20px;
+bottom: 0; */
+
 
 }
 
-.pic01{
-width: 53%;
-}
+/* .pic01{
+  width: 56%;
+  } */
 
-/* Center website */
-.main{
-  /* max-width: 1500px; */
-  margin: 100px auto;
-  width: 80%;
-
-}
 
 h1 {
   font-size: 50px;
@@ -45,23 +46,23 @@ h1 {
 }
 
 .row {
-  margin: 10px -16px;
+  margin: 100px auto;
+  width: 80%;
+  max-width: 1400px;
+  
 }
 
-/* Add padding BETWEEN each column */
 .row,
 .row > .column {
-  padding: 8px;
+  /* padding: 8px; */
 }
 
 /* Create three equal columns that floats next to each other */
 .column {
   float: left;
-  width: 16%;
-  /* width: 19%; */
-  display: none; /* Hide all elements by default */
+  /* width: 15%; */
+  display: block; /* Hide all elements by default */
   margin: 3px;
-  /* background-color: rgb(0, 0, 0); */
 }
 
 /* Clear floats after rows */ 
@@ -74,12 +75,29 @@ h1 {
 /* Content */
 .content {
   background-color: rgb(255, 255, 255);
-  /* height: 330px; */
-  padding: 5px;
-  /* overflow: scroll; */
+  padding: 10px;
+  max-height:278px ; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  /* position: relative; */
+
+
+
+}
+.content img{
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  padding: 0;
+  /* margin: 0; */
+  /* margin-bottom: 20px; */
 }
 
-/* The "show" class is added to the filtered elements */
+/* The "show"
+ class is added to the filtered elements */
 .show {
   display: block;
 }
@@ -115,7 +133,6 @@ h1 {
 .modal {
   display: none;
   position: fixed;
-  /* z-index: 1; */
   left: 0;
   top: 0;
   width: 100%;
@@ -128,31 +145,41 @@ h1 {
 
 .modal-content {
   background-color: #e6e6e6;
-  margin: auto;
-  padding: 20px;
+  margin:auto;
+  padding: 40px 20px; /* 增加上边距的padding */
   border: 1px solid #888;
-  width: 80%;
-  max-width: 1100px;
   text-align: center;
   position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: stretch; /* 使 p 标签的高度与图片高度一致 */
 }
 
 .modal img {
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: 70vh;
-  float: left;
-  z-index: 2;
-  /* position: relative; */
+  max-width: 80%;
+  height: 650px;
+  object-fit: contain;
 }
+
+#modalText{
+  margin-left: 10px; /* 保持与图片的间距 */
+  padding: 10px;
+  text-align: left;
+  flex: 1; /* 允许 p 标签内容换行 */
+  display: flex;
+  flex-direction: column; /* 从上往下排列 */
+  align-items: flex-start; /* 确保文本从左对齐 */
+  justify-content: flex-start; /* 确保文本从上对齐 */
+}
+
 
 .close {
   color: #aaa;
   position: absolute;
-  top: 10px;
+  top: 5px;
+  bottom: 15px;
   right: 25px;
-  font-size: 28px;
+  font-size: 32px;
   font-weight: bold;
 }
 
@@ -162,6 +189,7 @@ h1 {
   color: black;
   text-decoration: none;
   cursor: pointer;
+
   
 }
 
@@ -170,26 +198,11 @@ body.modal-open {
   overflow: hidden;
 }
 
-body.modal-open .主耶稣 {
-  filter: blur(5px);
+body.modal-open .column {
+  filter: blur(6px);
 }
 
 .hidden {
   display: none;
 }
 
-#modalText{
-text-align: left;
-font-size: 16px;
-/* height: 600px; */
-padding: 25px;
-position: absolute;
-right: 93px;
-top:10px;
-z-index: 0;
-width: 30%;
-height: 94%;
-margin: 10px;
-background-color: #ccc1c1;
-
-}

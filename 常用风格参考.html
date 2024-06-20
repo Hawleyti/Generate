@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI资源库</title>
-<link rel="stylesheet" href="./nav/style_reference.css">
+<link rel="stylesheet" href="./nav/Common_styles.css">
 <Script src="./nav/JS.JS"></Script>
 <script src="./nav/nav01.js"></script>
 <style>
@@ -759,10 +759,6 @@
           </div>
         </div> 
       </div> <!-- 真实风格  -->
-
-
-
-
     </div>
 
 
@@ -779,18 +775,22 @@
     }window.scrollTo(0, 0);
   }
 
-  var btns = document.getElementsByClassName("filter-btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    // 将所有按钮的背景颜色恢复成默认颜色
-    for (var j = 0; j < btns.length; j++) {
-      btns[j].style.backgroundColor = "#ddd";
-    }
-    // 将当前点击的按钮的背景颜色修改为选中颜色
-    this.style.backgroundColor = "#04AA6D";
-    filterSelection(this.getAttribute("data-filter"));
-  });
-}
+  var btns = document.getElementsByClassName("btn");
+      for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function() {
+              var filter = this.getAttribute("data-filter");
+              console.log("Filter selected: " + filter);
+
+              // 移除所有按钮的 selected 类
+              for (var j = 0; j < btns.length; j++) {
+                  btns[j].classList.remove("selected");
+              }
+
+              // 给当前点击的按钮添加 selected 类
+              this.classList.add("selected");
+              loadImages(filter);
+          });
+      }
 </script>    
 </body>
 </html>
