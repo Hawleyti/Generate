@@ -52,10 +52,6 @@ h1 {
   
 }
 
-.row,
-.row > .column {
-  /* padding: 8px; */
-}
 
 /* Create three equal columns that floats next to each other */
 .column {
@@ -96,6 +92,8 @@ h1 {
   /* margin-bottom: 20px; */
 }
 
+
+
 /* The "show"
  class is added to the filtered elements */
 .show {
@@ -120,7 +118,7 @@ h1 {
 }
 
 .btn.active {
-  background-color: #666;
+  background-color: #636262;
   color: white;
 }
 

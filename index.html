@@ -17,8 +17,8 @@
     <script id="replace_with_navbar" src="./nav/nav.js"></script>
     <div id="myBtnContainer">
         <h4>美加AI关键词</h4>
-        <!-- <button class="btn filter-btn" onclick="filterSelection('all')"data-filter="all"> Show all</button> -->
-        <button class="btn active" onclick="filterSelection('Jesus')" data-filter="Jesus"> 主耶稣</button>
+        <button class="btn active" onclick="filterSelection('all')"data-filter="all"> Show all</button>
+        <button class="btn filter-btn" onclick="filterSelection('Jesus')" data-filter="Jesus"> 主耶稣</button>
         <button class="btn filter-btn" onclick="filterSelection('Cartoon')" data-filter="Cartoon"> 卡通人物</button>
         <button class="btn filter-btn" onclick="filterSelection('people')" data-filter="people"> 真实人物</button>
         <button class="btn filter-btn" onclick="filterSelection('landscape')" data-filter="landscape"> 风景/花草</button>
@@ -47,7 +47,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             console.log("Document loaded");
-            loadImages("Jesus");
+            loadImages("Show all");
 
             var btns = document.getElementsByClassName("btn");
             for (var i = 0; i < btns.length; i++) {
