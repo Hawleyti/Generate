@@ -6,6 +6,11 @@
     <script src="./nav/JS.JS"></script>
     <script src="./nav/nav01.js"></script>
     <link rel="stylesheet" href="./nav/style_reference.css">
+    <script>
+        if (localStorage.getItem('authenticated') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
     <style>
         #navbar a.active {
             background-color: #c7e0f1;

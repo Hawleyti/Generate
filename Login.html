@@ -1,31 +1,30 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登录界面</title>
+    <title>Login</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-        }
         .login-form {
             display: flex;
             flex-direction: column;
             width: 300px;
+            margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(173, 216, 230, 0.5); /* 浅蓝色 */
+            border: 3px solid rgba(182, 182, 184, 0.5); /* 深度蓝色 */
+            padding: 15px 10px;
         }
         .login-form input {
-            margin-bottom: 10px;
-            padding: 8px;
+            margin: 10px 0;
+            padding: 10px;
             font-size: 16px;
         }
         .login-form button {
             padding: 10px;
             font-size: 16px;
-            cursor: pointer;
         }
         .error {
             color: red;
@@ -35,29 +34,31 @@
 </head>
 <body>
     <div class="login-form">
-        <input type="text" id="username" placeholder="用户名">
-        <input type="password" id="password" placeholder="密码">
+        <input type="text" id="username" placeholder="用户名" onfocus="clearErrorMessage()">
+        <input type="password" id="password" placeholder="密码" onfocus="clearErrorMessage()">
         <button onclick="login()">登录</button>
         <div class="error" id="error-message"></div>
     </div>
 
     <script>
         function login() {
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-            var errorMessage = document.getElementById('error-message');
-
-            // 预定义的正确用户名和密码
-            var correctUsername = 'jinhaobenfenai@gmail.com';
-            var correctPassword = 'jinhaobenfenai292934';
-
-            if (username === correctUsername && password === correctPassword) {
-                // 跳转到指定网页
-                window.location.href = 'index.html';
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = ''; // 清除错误消息
+    
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+    
+            if (username === 'jinhaobenfenai@gmail.com' && password === 'jinhaobenfenai292934') {
+                localStorage.setItem('authenticated', 'true');
+                window.location.href = 'index.html'; // 你的网站主页
             } else {
-                // 显示错误信息
-                errorMessage.textContent = '用户名或密码错误，请重试。';
+                errorMessage.textContent = '用户名或密码错误';
             }
+        }
+    
+        function clearErrorMessage() {
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = ''; // 清除错误消息
         }
     </script>
 </body>

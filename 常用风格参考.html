@@ -6,6 +6,11 @@
 <link rel="stylesheet" href="./nav/Common_styles.css">
 <Script src="./nav/JS.JS"></Script>
 <script src="./nav/nav01.js"></script>
+<script>
+  if (localStorage.getItem('authenticated') !== 'true') {
+      window.location.href = 'login.html';
+  }
+</script>
 <style>
   #navbar a.fengge {
     background-color: #c7e0f1;
