@@ -49,7 +49,7 @@
             const password = document.getElementById('password').value;
     
             if (username === 'jinhaobenfenai@gmail.com' && password === 'jinhaobenfenai292934') {
-                localStorage.setItem('authenticated', 'true');
+                sessionStorage.setItem('authenticated', 'true');
                 window.location.href = 'index.html'; // 你的网站主页
             } else {
                 errorMessage.textContent = '用户名或密码错误';
