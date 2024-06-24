@@ -5,9 +5,9 @@
     <script src="./nav/script.js"></script>
     <script src="./nav/JS.JS"></script>
     <script src="./nav/nav01.js"></script>
-    <link rel="stylesheet" href="./nav/style_reference.css">
+    <link rel="stylesheet" href="./nav/navbar.css">
     <script>
-        if (sessionStorage.getItem('authenticated') !== 'true') {
+        if (localStorage.getItem('authenticated') !== 'true') {
             window.location.href = 'Login.html';
         }
     </script>
@@ -20,6 +20,7 @@
 </head>
 <body>
     <script id="replace_with_navbar" src="./nav/nav.js"></script>
+
     <div id="myBtnContainer">
         <h4>美加AI关键词</h4>
         <button class="btn active" onclick="filterSelection('all')"data-filter="all"> Show all</button>
@@ -36,6 +37,7 @@
         <button class="btn filter-btn" onclick="filterSelection('element')" data-filter="element"> 元素</button>
         <button class="btn filter-btn" onclick="filterSelection('design')" data-filter="design"> 设计</button>
         <button class="btn filter-btn" onclick="filterSelection('religion')" data-filter="religion"> 宗教圣经故事</button>
+    </div>
     </div>
 
     <div id="imageContainer" class="fade"></div>
@@ -54,29 +56,30 @@
             console.log("Document loaded");
             loadImages("all");
 
-            var btns = document.getElementsByClassName("btn");
-            for (var i = 0; i < btns.length; i++) {
-                btns[i].addEventListener("click", function() {
-                    var filter = this.getAttribute("data-filter");
+            var btnContainer = document.getElementById("myBtnContainer");
+            btnContainer.addEventListener("click", function(event) {
+                if (event.target.classList.contains("btn")) {
+                    var filter = event.target.getAttribute("data-filter");
                     console.log("Filter selected: " + filter);
 
-                    // 移除所有按钮的 selected 类
-                    for (var j = 0; j < btns.length; j++) {
-                        btns[j].classList.remove("selected");
+                    // Remove selected class from all buttons
+                    var btns = btnContainer.getElementsByClassName("btn");
+                    for (var i = 0; i < btns.length; i++) {
+                        btns[i].classList.remove("selected");
                     }
 
-                    // 给当前点击的按钮添加 selected 类
-                    this.classList.add("selected");
+                    // Add selected class to clicked button
+                    event.target.classList.add("selected");
 
                     loadImages(filter);
-                });
-            }
+                }
+            });
         });
 
         function loadImages(filter) {
             var imageContainer = document.getElementById("imageContainer");
             imageContainer.classList.remove("show");
-            setTimeout(function() {
+            requestAnimationFrame(() => {
                 imageContainer.innerHTML = "";
 
                 var xhr = new XMLHttpRequest();
@@ -84,25 +87,29 @@
                     if (this.readyState == 4 && this.status == 200) {
                         console.log("Images loaded for filter: " + filter);
                         imageContainer.innerHTML = this.responseText;
-                        imageContainer.classList.add("show");
+                        requestAnimationFrame(() => {
+                            imageContainer.classList.add("show");
+                        });
                     }
                 };
                 xhr.open("GET", filter + ".html", true);
                 xhr.send();
-            }, 500); // 延迟500ms以适应渐隐效果
+            });
         }
 
         function showModal(event) {
             const contentDiv = event.target.closest('.content');
-            const imgSrc = contentDiv.querySelector('img').src;
-            const describeText = contentDiv.querySelector('.describe').innerText;
+            if (contentDiv) {
+                const imgSrc = contentDiv.querySelector('img').src;
+                const describeText = contentDiv.querySelector('.describe').innerText;
 
-            document.getElementById('modalImg').src = imgSrc;
-            document.getElementById('modalText').innerText = describeText;
+                document.getElementById('modalImg').src = imgSrc;
+                document.getElementById('modalText').innerText = describeText;
 
-            document.getElementById('myModal').style.display = "flex";
-            document.body.classList.add('modal-open');
-            document.querySelector('#navbar').classList.add('hidden');
+                document.getElementById('myModal').style.display = "flex";
+                document.body.classList.add('modal-open');
+                document.querySelector('#navbar').classList.add('hidden');
+            }
         }
 
         function closeModal() {
@@ -116,7 +123,6 @@
                 closeModal();
             }
         }
-        
     </script>
 </body>
 </html>

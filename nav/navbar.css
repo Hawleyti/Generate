@@ -2,22 +2,82 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #e3f2fd;
-  padding: 10px,20px;
-  font-family: Arial;
-}
-#myBtnContainer{
-position: fixed;
-top: 57px;
-float: left;
-left: 0px;
-width: 150px;
-height: 800px;
+
+#myBtnContainer {
+  position: fixed;
+  top: 57px;
+  left: 0;
+  width: 150px;
+  height: 800px;
 }
 
-h4{
-text-align:center;
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+h2{
+  display: block; 
+  margin: 0;
+  clear: both;
+  padding: 30px 7px 10px 5px;
+  font-size: 35px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narron', Arial, sans-serif;
+} 
+
+h4 {
+  text-align: center;
+}
+
+/* Style the buttons */
+.btn {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* 倒角 */
+  outline: none;
+  padding: 12px 30px;
+  background-color: white;
+  cursor: pointer;
+  width: 150px;
+  display: block;
+  margin: 2px;
+
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 阴影 */
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #ddd;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* 增加悬停时的阴影 */
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
+.fade {
+  opacity: 0;
+  /* transition: opacity 0.5s ease-in-out; */
+}
+
+.show {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.btn.selected {
+  background-color: lightgreen;
+  color: black;
+}
+
+.btn:not(:last-child) {
+  margin-bottom: 5px; /* 按钮之间的分界线 */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+/* The "show"
+ class is added to the filtered elements */
+ .show {
+  display: block;
 }
 
 p{
@@ -26,37 +86,41 @@ background-color: #fbf2fc;
 padding: 10px 5px;
 max-width: 280px;
 font-size: 16px;
-/* float: left; */
-
-/* position: absolute;
-left: 20px;
-bottom: 0; */
-
 
 }
 
-/* .pic01{
-  width: 56%;
-  } */
-
-
-h1 {
-  font-size: 50px;
-  word-break: break-all;
-}
 
 .row {
+  --gap: 0.5em;
+  --columns: 6;
+  max-width: 75%;
   margin: 100px auto;
-  width: 80%;
-  max-width: 1400px;
-  
+  display: column;
+  columns: var(--columns);
+  gap: var(--gap);
+  /* background-color: aquamarine; */
+}
+
+.row > * {
+  break-inside: avoid;
+  margin-bottom: var(--gap);
+  display: flex;
+  justify-content: center;
+}
+
+@supports (row-template-grid: masonry) {
+  .row {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    grid-template-rows: masonry;
+    grid-auto-flow: dense;
+  }
 }
 
 
 /* Create three equal columns that floats next to each other */
-.column {
+.btn.column {
   float: left;
-  /* width: 15%; */
   display: block; /* Hide all elements by default */
   margin: 3px;
 }
@@ -69,58 +133,19 @@ h1 {
 }
 
 /* Content */
-.content {
-  background-color: rgb(255, 255, 255);
-  padding: 10px;
-  max-height:278px ; */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  /* position: relative; */
-
-
-
+.row .column .content img {
+  max-width: 100%;
 }
-.content img{
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
-  padding: 0;
-  /* margin: 0; */
-  /* margin-bottom: 20px; */
+
+.row .column .content {
+  padding: 0.5em;
+  box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
+  background: white;
 }
 
 
 
-/* The "show"
- class is added to the filtered elements */
-.show {
-  display: block;
-}
 
-/* Style the buttons */
-.btn {
-  border: none;
-  outline: none;
-  padding: 12px 30px;
-  background-color: white;
-  cursor: pointer;
-  width: 150px;
-  display: block;
-  margin: 2px;
-  top: 500px;
-}
-
-.btn:hover{
-  background-color: #ddd;
-}
-
-.btn.active {
-  background-color: #636262;
-  color: white;
-}
 
 /* 控制P标签的显示与关闭 */
 .describe {
@@ -174,7 +199,7 @@ h1 {
 .close {
   color: #aaa;
   position: absolute;
-  top: 5px;
+  top: -5px;
   bottom: 15px;
   right: 25px;
   font-size: 32px;
@@ -187,8 +212,6 @@ h1 {
   color: black;
   text-decoration: none;
   cursor: pointer;
-
-  
 }
 
 /* Background blur effect */
@@ -196,7 +219,7 @@ body.modal-open {
   overflow: hidden;
 }
 
-body.modal-open .column {
+body.modal-open .column,body.modal-open .lie,body.modal-open h2,body.modal-open #myBtnContainer{
   filter: blur(6px);
 }
 
@@ -204,3 +227,55 @@ body.modal-open .column {
   display: none;
 }
 
+/* all_html文件效果控制区 */
+.software {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 20px;
+
+} 
+.ron {
+ width: 80%;
+ margin: 10px auto;
+ position: relative;
+ top: 100px;
+}
+
+.software.content{
+  background-color: #fff;
+  border-radius: 5px;
+  content-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  text-align: center;
+}
+
+.software img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+
+.software.copilot .lie {
+  width: 19.5%;
+  margin-bottom: 20px;
+  margin-left: 7px;
+}
+
+.software.Midjourney .lie {
+  width: 31.5%;
+  margin-bottom: 20px;
+  margin-left: 11px;
+}
+.software.ChatGPT .lie {
+  width: 31.5%;
+  margin-bottom: 20px;
+  margin-left: 11px;
+}
+.software.stablevideo .lie {
+  width: 31.5%;
+  margin-bottom: 20px;
+  margin-left: 11px;
+}/* all_html文件效果控制区 */
