@@ -286,3 +286,8 @@ body.modal-open .column,body.modal-open .lie,body.modal-open h2,body.modal-open 
   margin-bottom: 20px;
   margin-left: 11px;
 }/* all_html文件效果控制区 */
+
+.lazy {
+  background: url('./Picture/loading.gif') center center no-repeat;
+  min-height: 150px; /* 你可以根据图片的大小调整这个高度 */
+}

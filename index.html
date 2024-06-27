@@ -2,15 +2,14 @@
 <html>
 <head>
     <title>AI描述词</title>
-    <script src="./nav/script.js"></script>
-    <script src="./nav/JS.JS"></script>
-    <script src="./nav/nav01.js"></script>
+    <script src="./nav/script_all.js"></script>
+    <!-- <script src="LJZ.js"></script> -->
     <link rel="stylesheet" href="./nav/navbar.css">
-    <script>
+    <!-- <script>
         if (localStorage.getItem('authenticated') !== 'true') {
             window.location.href = 'Login.html';
         }
-    </script>
+    </script> -->
     <style>
         #navbar a.active {
             background-color: #c7e0f1;
@@ -19,7 +18,7 @@
     </style>
 </head>
 <body>
-    <script id="replace_with_navbar" src="./nav/nav.js"></script>
+    <script id="replace_with_navbar" src="./nav/script_all.js"></script>
 
     <div id="myBtnContainer">
         <h4>美加AI关键词</h4>
@@ -51,83 +50,5 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-    console.log("Document loaded");
-    loadImages("all");
-
-    var btnContainer = document.getElementById("myBtnContainer");
-    btnContainer.addEventListener("click", function(event) {
-        if (event.target.classList.contains("btn")) {
-            var filter = event.target.getAttribute("data-filter");
-            console.log("Filter selected: " + filter);
-
-            // Remove selected class from all buttons
-            var btns = btnContainer.getElementsByClassName("btn");
-            for (var i = 0; i < btns.length; i++) {
-                btns[i].classList.remove("selected");
-            }
-
-            // Add selected class to clicked button
-            event.target.classList.add("selected");
-
-            loadImages(filter);
-        }
-    });
-});
-
-function loadImages(filter) {
-    var imageContainer = document.getElementById("imageContainer");
-    imageContainer.classList.remove("show");
-    requestAnimationFrame(() => {
-        imageContainer.innerHTML = "";
-
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                console.log("Images loaded for filter: " + filter);
-                imageContainer.innerHTML = this.responseText;
-                requestAnimationFrame(() => {
-                    imageContainer.classList.add("show");
-                    document.querySelectorAll('.row .column .content img').forEach(img => {
-                        img.classList.add('loaded');
-                    });
-                });
-            }
-        };
-        xhr.open("GET", filter + ".html", true);
-        xhr.send();
-    });
-}
-
-function showModal(event) {
-    const contentDiv = event.target.closest('.content');
-    if (contentDiv) {
-        const imgSrc = contentDiv.querySelector('img').src;
-        const describeText = contentDiv.querySelector('.describe').innerText;
-
-        document.getElementById('modalImg').src = imgSrc;
-        document.getElementById('modalText').innerText = describeText;
-
-        document.getElementById('myModal').style.display = "flex";
-        document.body.classList.add('modal-open');
-        document.querySelector('#navbar').classList.add('hidden');
-    }
-}
-
-function closeModal() {
-    document.getElementById('myModal').style.display = "none";
-    document.body.classList.remove('modal-open');
-    document.querySelector('#navbar').classList.remove('hidden');
-}
-
-window.onclick = function(event) {
-    if (event.target == document.getElementById('myModal')) {
-        closeModal();
-    }
-}
-
-
-    </script>
 </body>
 </html>
