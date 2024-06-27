@@ -5,11 +5,12 @@
     <script src="./nav/script_all.js"></script>
     <!-- <script src="LJZ.js"></script> -->
     <link rel="stylesheet" href="./nav/navbar.css">
-    <!-- <script>
-        if (localStorage.getItem('authenticated') !== 'true') {
+    <script>
+          // 检查用户是否已认证
+          if (sessionStorage.getItem('authenticated') !== 'true') {
             window.location.href = 'Login.html';
         }
-    </script> -->
+    </script>
     <style>
         #navbar a.active {
             background-color: #c7e0f1;
