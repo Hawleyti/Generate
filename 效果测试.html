@@ -1,0 +1,147 @@
+/* Add some CSS for the modal and navigation buttons */
+<style>
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 0;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-slider {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-slider img {
+    width: 100%;
+    height: auto;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+
+
+</style>
+
+
+<div class="column people">
+    <div class="content">
+        <img src="https://marcos947.github.io/Gallery/061.jpg" alt="真实人物">
+        <img src="https://marcos947.github.io/Gallery/086.png" alt="宗教故事">
+        <img src="https://marcos947.github.io/Gallery/082.png" alt="Jesus">
+        <p class="describe">
+            制作人员：曾爱
+            <br>
+            使用的软件：网页 Copilot 
+            <br>
+            完成时间：2024/6/23
+            <br>
+            图片描述词：
+            电影风格，近景，侧视，底光，一位欧美成年女性，面带微笑，微微仰头，身体依在窗户边，眼睛看着前方在思考，手里拿着一本打开的书，看起来像是圣经。从窗户透进来的阳光温暖而明亮，画面暖色调，背景模糊虚化的大窗户。
+        </p>
+        <p class="lick" onclick="showModal(event)">查看描述词</p>
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-slider">
+            <button class="prev" onclick="prevImage()">&#10094;</button>
+            <img id="modalImg" src="" alt="tupian">
+            <button class="next" onclick="nextImage()">&#10095;</button>
+        </div>
+        <p id="modalText"></p>
+    </div>
+</div>
+
+<script>
+    let modal = document.getElementById("myModal");
+let modalImg = document.getElementById("modalImg");
+let modalText = document.getElementById("modalText");
+let images = document.querySelectorAll('.column .content img');
+let currentIndex = 0;
+
+function showModal(event) {
+    currentIndex = 0;
+    modal.style.display = "block";
+    updateModal();
+}
+
+function closeModal() {
+    modal.style.display = "none";
+}
+
+function updateModal() {
+    modalImg.src = images[currentIndex].src;
+    modalText.innerText = images[currentIndex].alt;
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateModal();
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateModal();
+}
+
+</script>

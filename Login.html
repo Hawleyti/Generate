@@ -56,7 +56,16 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
     
-            if (username === 'jinhaobenfenai@gmail.com' && password === 'jinhaobenfenai292934') {
+            const validCredentials = [
+                { username: 'jinhaobenfenai@gmail.com', password: 'jinhaobenfenai292934' },
+                { username: 'newuser@example.com', password: 'newuserpassword123' }
+            ];
+    
+            const isValid = validCredentials.some(credentials => 
+                credentials.username === username && credentials.password === password
+            );
+    
+            if (isValid) {
                 sessionStorage.setItem('authenticated', 'true');
                 console.log('Login successful, redirecting to index.html');
                 window.location.href = 'index.html'; // 你的网站主页
