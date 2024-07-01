@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI描述词</title>
+    <script src="./nav/script_all.js"></script>
+    <link rel="stylesheet" href="./nav/navbar.css">
+    <!-- <script>
+          // 检查用户是否已认证
+          if (sessionStorage.getItem('authenticated') !== 'true') {
+            window.location.href = 'Login.html';
+        }
+    </script> -->
+    <style>
+        #navbar a.active {
+            background-color: #c7e0f1;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <script id="replace_with_navbar" src="./nav/script_all.js"></script>
+
+    <div id="myBtnContainer">
+        <h4>美加AI关键词</h4>
+        <button class="btn active" onclick="filterSelection('all')"data-filter="all"> Show all</button>
+        <button class="btn filter-btn" onclick="filterSelection('Jesus')" data-filter="Jesus"> 动画卡通类</button>
+        <button class="btn filter-btn" onclick="filterSelection('Cartoon')" data-filter="Cartoon"> 素描风格</button>
+        <button class="btn filter-btn" onclick="filterSelection('people')" data-filter="people"> 油画风格</button>
+        <button class="btn filter-btn" onclick="filterSelection('landscape')" data-filter="landscape"> 水彩风格</button>
+        <button class="btn filter-btn" onclick="filterSelection('animal')" data-filter="animal">真实风格</button>
+        <button class="btn filter-btn" onclick="filterSelection('Angel')" data-filter="Angel"> 彩铅</button>
+    </div>
+    </div>
+
+    <div id="imageContainer" class="fade"></div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" alt="tupian">
+            <p id="modalText"></p>
+        </div>
+    </div>
+
+</body>
+</html>
