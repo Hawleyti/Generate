@@ -133,57 +133,74 @@ window.onscroll = function() {
 
 // 加载图片
 function loadImages(filter) {
-  var imageContainer = document.getElementById("imageContainer");
-  imageContainer.classList.remove("show");
-  requestAnimationFrame(() => {
-      imageContainer.innerHTML = "";
+    var imageContainer = document.getElementById("imageContainer");
+    imageContainer.classList.remove("show");
+    requestAnimationFrame(() => {
+        imageContainer.innerHTML = "";
+        
+        // 定义要尝试的文件夹路径
+        var folders = ["vocabulary01"];
+        var index = 0;
 
-      var xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-              console.log("Images loaded for filter: " + filter);
-              imageContainer.innerHTML = this.responseText;
-              requestAnimationFrame(() => {
-                  imageContainer.classList.add("show");
-                  document.querySelectorAll('.row .column .content img').forEach(img => {
-                      img.classList.add('loaded');
-                  });
-                  initLazyLoad(); // 初始化懒加载
-              });
-          }
-      };
-      xhr.open("GET", "vocabulary/" + filter + ".html", true);
-    //   xhr.open("GET", filter + ".html", true);
-      xhr.send();
-  });
+        function tryLoadFromFolder() {
+            if (index < folders.length) {
+                var folder = folders[index];
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4) {
+                        if (this.status == 200) {
+                            console.log("Images loaded from folder: " + folder + " for filter: " + filter);
+                            imageContainer.innerHTML = this.responseText;
+                            requestAnimationFrame(() => {
+                                imageContainer.classList.add("show");
+                                document.querySelectorAll('.row .column .content img').forEach(img => {
+                                    img.classList.add('loaded');
+                                });
+                                initLazyLoad(); // 初始化懒加载
+                            });
+                        } else {
+                            index++;
+                            tryLoadFromFolder();
+                        }
+                    }
+                };
+                xhr.open("GET", folder + "/" + filter + ".html", true);
+                xhr.send();
+            } else {
+                console.log("File not found in any specified folder for filter: " + filter);
+            }
+        }
+
+        tryLoadFromFolder();
+    });
 }
 
 // 显示模态框
 function showModal(event) {
-  const contentDiv = event.target.closest('.content');
-  if (contentDiv) {
-      const imgSrc = contentDiv.querySelector('img').src;
-      const describeText = contentDiv.querySelector('.describe').innerText;
-
-      document.getElementById('modalImg').src = imgSrc;
-      document.getElementById('modalText').innerText = describeText;
-
-      document.getElementById('myModal').style.display = "flex";
-      document.body.classList.add('modal-open');
-      document.querySelector('#navbar').classList.add('hidden');
-  }
+    const contentDiv = event.target.closest('.content');
+    if (contentDiv) {
+        const imgSrc = contentDiv.querySelector('img').src;
+  
+        document.getElementById('modalImg').src = imgSrc;
+  
+        document.getElementById('myModal').style.display = "flex";
+        document.body.classList.add('modal-open');
+        document.querySelector('#navbar').classList.add('hidden');
+    }
 }
 
 // 关闭模态框
 function closeModal() {
-  document.getElementById('myModal').style.display = "none";
-  document.body.classList.remove('modal-open');
-  document.querySelector('#navbar').classList.remove('hidden');
+    document.getElementById('myModal').style.display = "none";
+    document.body.classList.remove('modal-open');
+    document.querySelector('#navbar').classList.remove('hidden');
 }
 
 // 点击模态框外部关闭模态框
 window.onclick = function(event) {
-  if (event.target == document.getElementById('myModal')) {
-      closeModal();
-  }
+    if (event.target == document.getElementById('myModal')) {
+        closeModal();
+    }
 }
+
+  
