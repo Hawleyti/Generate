@@ -1,45 +1,47 @@
 
 <style>
 /* * {box-sizing: border-box;} */
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
 
-#navbar {
-  /* position: fixed; */
-  overflow: hidden;
-  background-color: #a2d8ff;
-  /* padding: 10px 80px 10px 80px; */
-  transition: 0.3s;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 99;
-  margin: -7px;
-  /* overflow: visible; */
-}
+    #navbar {
+      background-color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 99;
+      /* padding-left: 200px;  */
+    }
 
-#navbar a {
-  float: left;
-  color: black;
-  /* text-align: center; */
-  padding: 18px;
-  text-decoration: none;
-  font-size: 18px; 
-  line-height: 25px;
-  border-radius: 4px;
-  
-}
+.navbar a, .navbar .dropbtn {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 30px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      border-bottom: 1px solid rgba(255, 20, 20, 0.1);
+      margin: 0 10px;
+      /* position: relative;
+      left: 200px; */
+    }
 
 #navbar #logo {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
   transition: 0.4s;
   margin-left: 200px;
 }
 
-#navbar a:hover {
-  background-color: #bee9bd;
+.navbar a:hover {
+  background-color: rgba(144, 238, 144, 0.7);
   color: black;
-  /* padding: 30px 20px; */
-  
 }
 
 
@@ -51,16 +53,97 @@
   align-items: center;
 }
 
+.dropdown {
+      position: relative;
+      display: inline-block;
+      z-index: 2;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(144, 238, 144, 0.7);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-icon {
+      font-size: 12px;
+      margin-left: 5px;
+    }
+
+/* 媒体查询 */
+@media screen and (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 150px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .navbar a, .navbar .dropbtn {
+    text-align: left;
+    padding: 14px;
+    width: 100px;
+  }
+  .dropdown-content {
+    position: relative;
+    box-shadow: none;
+  }
+}
 
 </style>
 
-<div id="navbar">
-  <a id="logo">AI资源库（美加汇总）</a>
-  <div id="navbar-right">
-    <a class="active" href="../Generate/index.html"target="_self">首页</a>
-    <a class="AIZY" href="../Generate/AI资源.html"target="_self">AI资源</a>
-    <a class="BingCS" href="../Generate/BING效果图.html"target="_self">BING效果图</a>
-    <a class="fengge" href="../Generate/常用风格参考.html"target="_self">常用风格参考</a>
-  </div>
+<div class="navbar" id="navbar">
+  <span style="color: #f9f9f9; z-index: 1000;font-size: 20px;padding: 0;">AI资源库（美加汇总）</span>
+  <a href="#">首页</a>
+  <a href="../Generate/Jesus.html" class="dropbtn">主耶稣</a>
+    <!-- <div class="dropdown">
+      
+      <div class="dropdown-content">
+        <a href="#">写实风格</a>
+        <a href="#">卡通风格</a>
+        <a href="#">水彩风格</a>
+      </div>
+    </div> -->
+    <div class="dropdown">
+      <a href="../Generate/figure.html" class="dropbtn">人物<span class="dropdown-icon">▼</span></a>
+      <div class="dropdown-content">
+        <a href="../Generate/figure_prayer.html">人物祷告</a>
+        <a href="../Generate/religion.html">宗教人物</a>
+        <a href="../Generate/Jesus_with_People.html">主耶稣与人</a>
+        <a href="../Generate/Characters_Brand.html">人物举牌子</a>
+        <!-- <a href="#">人物综合</a> -->
+      </div>
+    </div>
+    <a href="../Generate/disaster.html">灾难</a>
+    <a href="../Generate/landscape.html">风景</a>
+    <a href="../Generate/animal.html">动物</a>
+    <a href="../Generate/architecture.html">建筑</a>
+    <a href="../Generate/element.html">元素</a>
+    <a href="../Generate/Meaning_illustration.html">寓意插画</a>
+    <a href="../Generate/heaven.html">地狱/天堂</a>
+
 </div>
+
+  
 

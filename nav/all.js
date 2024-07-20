@@ -82,32 +82,63 @@ function initLazyLoad() {
 
 // 处理按钮点击事件，添加 active 类，并加载对应的图片内容
 document.addEventListener("DOMContentLoaded", function() {
-  console.log("Document loaded");
-  loadImages("Jesus_01");
-
-  var btnContainer = document.getElementById("myBtnContainer");
-  btnContainer.addEventListener("click", function(event) {
-      if (event.target.classList.contains("btn")) {
-          var filter = event.target.getAttribute("data-filter");
-          console.log("Filter selected: " + filter);
-
-          // 移除所有按钮的 selected 类
-          var btns = btnContainer.getElementsByClassName("btn");
-          for (var i = 0; i < btns.length; i++) {
-              btns[i].classList.remove("selected");
-              btns[i].style.backgroundColor = ""; // 恢复默认背景色
-          }
-
-          // 添加 selected 类到点击的按钮
-          event.target.classList.add("selected");
-          event.target.style.backgroundColor = "lightgreen"; // 设置点击按钮的背景色
-
-          loadImages(filter);
-      }
+    console.log("Document loaded");
+  
+    // 定义默认加载的文件列表
+    var defaultFiles = ["Meaning_illustration_1", "animal_1", "architecture_1"];
+    
+    // 尝试加载默认文件
+    loadDefaultImages(defaultFiles);
+  
+    var btnContainer = document.getElementById("myBtnContainer");
+    btnContainer.addEventListener("click", function(event) {
+        if (event.target.classList.contains("btn")) {
+            var filter = event.target.getAttribute("data-filter");
+            console.log("Filter selected: " + filter);
+  
+            // 移除所有按钮的 selected 类
+            var btns = btnContainer.getElementsByClassName("btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("selected");
+                btns[i].style.backgroundColor = ""; // 恢复默认背景色
+            }
+  
+            // 添加 selected 类到点击的按钮
+            event.target.classList.add("selected");
+            event.target.style.backgroundColor = "lightgreen"; // 设置点击按钮的背景色
+  
+            loadImages(filter);
+        }
+    });
+  
+    initLazyLoad(); // 初始化懒加载
   });
-
-  initLazyLoad(); // 初始化懒加载
-});
+  
+  // 尝试按顺序加载默认文件
+  function loadDefaultImages(files) {
+    for (var i = 0; i < files.length; i++) {
+      try {
+        loadImages(files[i]);
+        console.log("Loaded: " + files[i]);
+        break; // 如果加载成功，退出循环
+      } catch (error) {
+        console.log("Failed to load: " + files[i] + ". Trying next file.");
+      }
+    }
+  }
+  
+  // 假设 loadImages 函数已经定义
+  function loadImages(filter) {
+    // 加载图像的逻辑
+    console.log("Loading images with filter: " + filter);
+  }
+  
+  // 假设 initLazyLoad 函数已经定义
+  function initLazyLoad() {
+    // 懒加载初始化的逻辑
+    console.log("Lazy load initialized");
+  }
+  
 
 // 加载导航栏
 fetch('./nav/nav.html')

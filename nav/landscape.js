@@ -83,7 +83,7 @@ function initLazyLoad() {
 // 处理按钮点击事件，添加 active 类，并加载对应的图片内容
 document.addEventListener("DOMContentLoaded", function() {
   console.log("Document loaded");
-  loadImages("Jesus_01");
+  loadImages("landscape_1");
 
   var btnContainer = document.getElementById("myBtnContainer");
   btnContainer.addEventListener("click", function(event) {
