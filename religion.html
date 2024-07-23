@@ -2,30 +2,31 @@
 <html>
 <head>
     <title>AI描述词</title>
-    <script src="./nav/religion.js"></script>
+    <script src="./nav/script_all.js"></script>
     <link rel="stylesheet" href="./nav/navbar.css">
-    <script>
+    <!-- <script>
         
         if (sessionStorage.getItem('authenticated') !== 'true') {
           window.location.href = 'Login.html';
       }
-  </script>
+  </script> -->
    <style>
-    #DD{
+    #DD, #BB{
       background-color: rgb(192, 191, 191);
       color: rgb(0, 0, 0);
     }
     </style>
 </head>
 <body>
-    <script id="replace_with_navbar" src="./nav/religion.js"></script>
+    <script id="replace_with_navbar" src="./nav/script_all.js"></script>
 
     <div id="imageContainer" class="fade"></div>
 
     <div id="myBtnContainer">
         <!-- <h4>美加AI关键词</h4> -->
         <a>&laquo;</a>
-        <button class="btn filter-btn" onclick="filterSelection('religion')" data-filter="religion"> 1</button>
+        <button class="btn filter-btn active" data-filter="religion" data-default="true">1</button>
+        <!-- <a class="btn active" onclick="filterSelection('heaven_1')"data-filter="heaven_1"> 2</a> -->
         <a>&raquo;</a>
     </div>
 

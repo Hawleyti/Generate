@@ -68,10 +68,10 @@ h4 {
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3); /* 增加悬停时的阴影 */
 }
 
-.btn.active {
+/* .btn.active {
   background-color: #666;
   color: white;
-}
+} */
 
 .fade {
   opacity: 0;

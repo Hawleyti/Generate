@@ -80,34 +80,52 @@ function initLazyLoad() {
   }
 }
 
+
+
 // 处理按钮点击事件，添加 active 类，并加载对应的图片内容
 document.addEventListener("DOMContentLoaded", function() {
-  console.log("Document loaded");
-  loadImages("Jesus_01");
+    console.log("Document loaded");
 
-  var btnContainer = document.getElementById("myBtnContainer");
-  btnContainer.addEventListener("click", function(event) {
-      if (event.target.classList.contains("btn")) {
-          var filter = event.target.getAttribute("data-filter");
-          console.log("Filter selected: " + filter);
+    var btnContainer = document.getElementById("myBtnContainer");
+    var defaultBtn = btnContainer.querySelector("button[data-default='true']");
 
-          // 移除所有按钮的 selected 类
-          var btns = btnContainer.getElementsByClassName("btn");
-          for (var i = 0; i < btns.length; i++) {
-              btns[i].classList.remove("selected");
-              btns[i].style.backgroundColor = ""; // 恢复默认背景色
-          }
+    if (defaultBtn) {
+        var filter = defaultBtn.getAttribute("data-filter");
+        console.log("Default filter selected: " + filter);
 
-          // 添加 selected 类到点击的按钮
-          event.target.classList.add("selected");
-          event.target.style.backgroundColor = "lightgreen"; // 设置点击按钮的背景色
+        // 加载默认按钮对应的图片内容
+        loadImages(filter);
+        defaultBtn.classList.add("selected");
+        defaultBtn.style.backgroundColor = "lightgreen";
+    }
 
-          loadImages(filter);
-      }
-  });
+    btnContainer.addEventListener("click", function(event) {
+        if (event.target.classList.contains("btn")) {
+            var filter = event.target.getAttribute("data-filter");
+            console.log("Filter selected: " + filter);
 
-  initLazyLoad(); // 初始化懒加载
+            // 移除所有按钮的 selected 类
+            var btns = btnContainer.getElementsByClassName("btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].classList.remove("selected");
+                btns[i].style.backgroundColor = ""; // 恢复默认背景色
+            }
+
+            // 添加 selected 类到点击的按钮
+            event.target.classList.add("selected");
+            event.target.style.backgroundColor = "lightgreen"; // 设置点击按钮的背景色
+
+            loadImages(filter);
+        }
+    });
+
+    initLazyLoad(); // 初始化懒加载
 });
+
+
+
+
+
 
 // 加载导航栏
 fetch('./nav/nav.html')

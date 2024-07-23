@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>AI描述词</title>
-    <script src="./nav/Characters_Brand.js"></script>
+    <script src="./nav/script_all.js"></script>
     <link rel="stylesheet" href="./nav/navbar.css">
     <script>
         
@@ -11,20 +11,21 @@
       }
   </script>
      <style>
-        #FF{
+        #FF, #BB{
           background-color: rgb(192, 191, 191);
           color: rgb(0, 0, 0);
         }
         </style>
 </head>
 <body>
-    <script id="replace_with_navbar" src="./nav/Characters_Brand.js"></script>
+    <script id="replace_with_navbar" src="./nav/script_all.js"></script>
 
     <div id="imageContainer" class="fade"></div>
 
     <div id="myBtnContainer">
         <a>&laquo;</a>
-        <a class="btn active" onclick="filterSelection('Characters_Brand')"data-filter="Characters_Brand"> 1</a>
+        <button class="btn filter-btn active" data-filter="Characters_Brand" data-default="true">1</button>
+        <!-- <button class="btn filter-btn" onclick="filterSelection('Characters_Brand')" data-filter="Characters_Brand"> 2</button> -->
         <a>&raquo;</a>
     </div>
 
