@@ -98,14 +98,20 @@ h4 {
   display: block;
 }
 
-p{
+.lick{
 margin: 0 auto;
-background-color: #fbf2fc;
+/* background-color: #fbf2fc; */
 padding: 10px 5px;
-max-width: 280px;
+/* max-width: 280px; */
 font-size: 16px;
+cursor: pointer;
+}
+.lick:hover{
+  color: brown;
+  
 
 }
+
 
 
 .row {
@@ -179,66 +185,135 @@ font-size: 16px;
 
 /* Modal Styles */
 .modal {
-  display: none;
-  position: fixed;
+  display: none; /* 隐藏模态框 */
+  position: fixed; /* 固定定位 */
+  z-index: 1; /* 置于顶层 */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* 半透明背景色 */
+  justify-content: center; /* 居中对齐 */
+  align-items: center; /* 居中对齐 */
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
+}
+
+.modal-content_all {
+  background-color: #ffffff;
+  display: flex; /* 使用 flex 布局 */
+  flex-direction: row; /* 水平排列子元素 */
+  /* width: auto; */
 }
 
 .modal-content {
-  background-color: #e6e6e6;
-  margin:auto;
-  padding: 40px 20px; /* 增加上边距的padding */
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  padding: 0 10px;
   border: 1px solid #888;
   text-align: center;
   position: relative;
   display: inline-flex;
-  flex-direction: row;
-  align-items: stretch; /* 使 p 标签的高度与图片高度一致 */
+  flex-direction: column; 
+  align-items: flex-start; /* 子元素从左对齐 */
 }
 
-.modal img {
-  max-width: 80%;
-  height: 650px;
-  object-fit: contain;
+.modal-content1{
+  /* background-color: rgb(231, 231, 231); */
+  /* margin: auto; */
+  padding: 0 5px;
+  /* border: 1px solid #888; */
+  /* text-align: center; */
+  position: relative;
+  /* height: 20px; */
+  /* display: inline-flex; */
+  /* flex-direction: column;  */
+  /* align-items: flex-start;  */
 }
 
-#modalText{
-  margin-left: 10px; /* 保持与图片的间距 */
-  padding: 10px;
-  text-align: left;
-  flex: 1; /* 允许 p 标签内容换行 */
+button.prev, button.next {
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.5);
+  transform: translateY(-50%);
+}
+
+button.prev {
+  left: 10px; /* 调整位置 */
+}
+
+button.next {
+  right: 10px; /* 调整位置 */
+}
+
+.modal-images img {
+  max-width:100%;
+  height: 650px; /* 设置大图的高度 */
+  object-fit: contain; /* 保持图片比例 */
+  padding: 10px 0px;
+  margin: 0;
+}
+
+.thumbnail-container {
   display: flex;
-  flex-direction: column; /* 从上往下排列 */
-  align-items: flex-start; /* 确保文本从左对齐 */
-  justify-content: flex-start; /* 确保文本从上对齐 */
+  flex-wrap: wrap; /* 使缩略图换行 */
+  gap: 8px; /* 图片之间的间距 */
+  margin-bottom: 10px;
+  justify-content: center; /* 缩略图居中对齐 */
+  height: auto; 
+  border-top: 2px solid #ccc; /* 添加顶部边框 */
+
 }
 
+.thumbnail-container .thumbnail {
+  height: 10%; /* 设置缩略图的高度 */
+  cursor: pointer;
+  transition: filter 0.3s ease; /* 平滑的过渡效果 */
+}
+
+
+.thumbnail:hover {
+  filter: grayscale(100%); /* 悬停时变成灰色 */
+  opacity: 0.8;
+}
+
+.modal-texts {
+  margin: 30px 10px;
+  text-align: left;
+  flex: 1; 
+  width: 320px;
+  background-color: rgba(252, 79, 79, 0.1);
+
+}
+
+#modalText {
+  margin: 0;
+  padding: 10px;
+}
 
 .close {
   color: #aaa;
   position: absolute;
   top: -5px;
-  bottom: 15px;
-  right: 25px;
-  font-size: 32px;
+  right: 10px;
+  font-size: 40px;
   font-weight: bold;
+  padding: 0px 5px;
+  /* background-color: rgb(68, 68, 68); */
 }
 
 .close:hover,
-.close:focus,
-.lick {
+.close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
-
 /* Background blur effect */
 body.modal-open {
   overflow: hidden;
@@ -252,63 +327,6 @@ body.modal-open #navbar{
   transform: translateY(-60px);
   transition: opacity 0.05s ease-in-out;
 }
-
-.hidden {
-  display: none;
-}
-
-/* all_html文件效果控制区 */
-.software {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  padding: 20px;
-
-} 
-.ron {
- width: 80%;
- margin: 10px auto;
- position: relative;
- top: 100px;
-}
-
-.software.content{
-  background-color: #fff;
-  border-radius: 5px;
-  content-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 5px;
-  text-align: center;
-}
-
-.software img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-
-.software.copilot .lie {
-  width: 18.5%;
-  margin-bottom: 20px;
-  margin-left: 7px;
-}
-
-.software.Midjourney .lie {
-  width: 31.5%;
-  margin-bottom: 20px;
-  margin-left: 11px;
-}
-.software.ChatGPT .lie {
-  width: 31.5%;
-  margin-bottom: 20px;
-  margin-left: 11px;
-}
-.software.stablevideo .lie {
-  width: 31.5%;
-  margin-bottom: 20px;
-  margin-left: 11px;
-}/* all_html文件效果控制区 */
 
 .lazy {
   background: url('./Picture/loading.gif') center center no-repeat;

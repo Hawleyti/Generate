@@ -81,7 +81,6 @@ function initLazyLoad() {
 }
 
 
-
 // 处理按钮点击事件，添加 active 类，并加载对应的图片内容
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Document loaded");
@@ -121,11 +120,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     initLazyLoad(); // 初始化懒加载
 });
-
-
-
-
-
 
 // 加载导航栏
 fetch('./nav/nav.html')
@@ -176,32 +170,108 @@ function loadImages(filter) {
   });
 }
 
-// 显示模态框
+
+// 模态框
+let slideIndex = 0; // 当前显示的幻灯片索引
+
 function showModal(event) {
-  const contentDiv = event.target.closest('.content');
-  if (contentDiv) {
-      const imgSrc = contentDiv.querySelector('img').src;
-      const describeText = contentDiv.querySelector('.describe').innerText;
+    const contentDiv = event.target.closest('.content');
+    if (contentDiv) {
+        const imgSrc = contentDiv.querySelector('img').src;
+        const boxImages = contentDiv.querySelectorAll('#box img');
+        const describeText = contentDiv.querySelector('.describe').innerText;
 
-      document.getElementById('modalImg').src = imgSrc;
-      document.getElementById('modalText').innerText = describeText;
+        // 获取所有图片，包括主图片和#box中的图片
+        const allImages = [imgSrc, ...Array.from(boxImages).map(img => img.src)];
 
-      document.getElementById('myModal').style.display = "flex";
-      document.body.classList.add('modal-open');
-      document.querySelector('#navbar').classList.add('hidden');
-  }
+        // 更新模态框的图片
+        const modalImages = document.querySelectorAll('.modal-images img');
+        modalImages.forEach((img, i) => {
+            img.src = allImages[i] || '';
+            img.style.display = allImages[i] ? 'block' : 'none';
+        });
+
+        // 更新缩略图列表
+        const thumbnailContainer = document.querySelector('.thumbnail-container');
+        thumbnailContainer.innerHTML = ''; // 清空现有缩略图
+        allImages.forEach((src, i) => {
+            if (src) {
+                const thumbnail = document.createElement('img');
+                thumbnail.className = 'thumbnail';
+                thumbnail.src = src;
+                thumbnail.style.width = '100px';
+                thumbnail.onclick = function() { showImage(this); };
+                thumbnailContainer.appendChild(thumbnail);
+            }
+        });
+
+        // 设置描述文本
+        document.getElementById('modalText').innerText = describeText;
+
+        // 初始化幻灯片索引和显示幻灯片
+        if (allImages.length > 1) {
+            slideIndex = 0;
+            showSlide(slideIndex); // 仅当有多张图片时才显示幻灯片
+            document.querySelector('.thumbnail-container').style.display = 'flex';
+            document.querySelector('.prev').style.display = 'block'; // 显示左右按钮
+            document.querySelector('.next').style.display = 'block'; // 显示左右按钮
+        } else {
+            document.querySelector('.thumbnail-container').style.display = 'none';
+            document.querySelector('.prev').style.display = 'none'; // 隐藏左右按钮
+            document.querySelector('.next').style.display = 'none'; // 隐藏左右按钮
+        }
+
+        // 显示模态框
+        document.getElementById('myModal').style.display = "flex";
+        document.body.classList.add('modal-open');
+        document.querySelector('#navbar').classList.add('hidden');
+    }
+}
+
+function showImage(thumbnail) {
+    const src = thumbnail.src;
+    const modalImages = document.querySelectorAll('.modal-images img');
+    modalImages.forEach(img => {
+        if (img.src === src) {
+            img.style.display = 'block';
+            slideIndex = Array.from(modalImages).indexOf(img);
+        } else {
+            img.style.display = 'none';
+        }
+    });
+}
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.modal-images img');
+    if (index >= slides.length) { slideIndex = 0; }
+    if (index < 0) { slideIndex = slides.length - 1; }
+    
+    slides.forEach((slide, i) => {
+        slide.style.display = (i === slideIndex) ? 'block' : 'none';
+    });
+}
+
+function nextSlide() {
+    slideIndex++;
+    showSlide(slideIndex);
+}
+
+function prevSlide() {
+    slideIndex--;
+    showSlide(slideIndex);
 }
 
 // 关闭模态框
 function closeModal() {
-  document.getElementById('myModal').style.display = "none";
-  document.body.classList.remove('modal-open');
-  document.querySelector('#navbar').classList.remove('hidden');
-}
-
-// 点击模态框外部关闭模态框
-window.onclick = function(event) {
-  if (event.target == document.getElementById('myModal')) {
-      closeModal();
+    document.getElementById('myModal').style.display = "none";
+    document.body.classList.remove('modal-open');
+    document.querySelector('#navbar').classList.remove('hidden');
   }
-}
+  
+  // 点击模态框外部关闭模态框
+  window.onclick = function(event) {
+    if (event.target == document.getElementById('myModal')) {
+        closeModal();
+    }
+  }
+  
