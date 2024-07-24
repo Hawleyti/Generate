@@ -172,7 +172,7 @@ function loadImages(filter) {
 
 
 // 模态框
-let slideIndex = 0; // 当前显示的幻灯片索引
+let slideIndex = 0;
 
 function showModal(event) {
     const contentDiv = event.target.closest('.content');
@@ -184,11 +184,16 @@ function showModal(event) {
         // 获取所有图片，包括主图片和#box中的图片
         const allImages = [imgSrc, ...Array.from(boxImages).map(img => img.src)];
 
-        // 更新模态框的图片
-        const modalImages = document.querySelectorAll('.modal-images img');
-        modalImages.forEach((img, i) => {
-            img.src = allImages[i] || '';
-            img.style.display = allImages[i] ? 'block' : 'none';
+        // 动态生成模态框中的图片元素
+        const modalImagesDiv = document.querySelector('.modal-images');
+        modalImagesDiv.innerHTML = ''; // 清空现有图片元素
+        allImages.forEach((src, i) => {
+            if (src) {
+                const img = document.createElement('img');
+                img.src = src;
+                img.style.display = i === 0 ? 'block' : 'none'; // 仅显示第一张图片
+                modalImagesDiv.appendChild(img);
+            }
         });
 
         // 更新缩略图列表
@@ -211,14 +216,14 @@ function showModal(event) {
         // 初始化幻灯片索引和显示幻灯片
         if (allImages.length > 1) {
             slideIndex = 0;
-            showSlide(slideIndex); // 仅当有多张图片时才显示幻灯片
+            showSlide(slideIndex);
             document.querySelector('.thumbnail-container').style.display = 'flex';
             document.querySelector('.prev').style.display = 'block'; // 显示左右按钮
             document.querySelector('.next').style.display = 'block'; // 显示左右按钮
         } else {
             document.querySelector('.thumbnail-container').style.display = 'none';
-            document.querySelector('.prev').style.display = 'none'; // 隐藏左右按钮
-            document.querySelector('.next').style.display = 'none'; // 隐藏左右按钮
+            document.querySelector('.prev').style.display = 'none';
+            document.querySelector('.next').style.display = 'none';
         }
 
         // 显示模态框
@@ -231,10 +236,10 @@ function showModal(event) {
 function showImage(thumbnail) {
     const src = thumbnail.src;
     const modalImages = document.querySelectorAll('.modal-images img');
-    modalImages.forEach(img => {
+    modalImages.forEach((img, i) => {
         if (img.src === src) {
             img.style.display = 'block';
-            slideIndex = Array.from(modalImages).indexOf(img);
+            slideIndex = i;
         } else {
             img.style.display = 'none';
         }
@@ -245,7 +250,7 @@ function showSlide(index) {
     const slides = document.querySelectorAll('.modal-images img');
     if (index >= slides.length) { slideIndex = 0; }
     if (index < 0) { slideIndex = slides.length - 1; }
-    
+
     slides.forEach((slide, i) => {
         slide.style.display = (i === slideIndex) ? 'block' : 'none';
     });
@@ -260,6 +265,8 @@ function prevSlide() {
     slideIndex--;
     showSlide(slideIndex);
 }
+
+
 
 // 关闭模态框
 function closeModal() {

@@ -36,28 +36,14 @@
     <div id="myModal" class="modal">
         <div class="modal-content_all">
             <div class="modal-content">
-                <!-- 左右按钮 -->
                 <button class="prev" onclick="prevSlide()">&#10094;</button>
                 <button class="next" onclick="nextSlide()">&#10095;</button>
-                
-                <div class="modal-images">
-                    <img id="modalImg1" src="" style="display: none;">
-                    <img id="modalImg2" src="" style="display: none;">
-                    <img id="modalImg3" src="" style="display: none;">
-                    <img id="modalImg4" src="" style="display: none;">
-                </div>
-                
-                <div class="thumbnail-container">
-                    <!-- 小尺寸图片列表 -->
-                    <img class="thumbnail" src="" onclick="showImage(this)">
-                    <!-- 其他小尺寸图片 -->
-                </div>
+                <div class="modal-images"></div>
+                <div class="thumbnail-container"></div>
             </div>
-            
             <div class="modal-texts">
                 <p id="modalText"></p>
             </div>
-            
             <div class="modal-content1">
                 <span class="close" onclick="closeModal()">&times;</span>
             </div>
