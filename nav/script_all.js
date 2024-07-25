@@ -145,30 +145,52 @@ window.onscroll = function() {
 
 // 加载图片
 function loadImages(filter) {
-  var imageContainer = document.getElementById("imageContainer");
-  imageContainer.classList.remove("show");
-  requestAnimationFrame(() => {
-      imageContainer.innerHTML = "";
+    var imageContainer = document.getElementById("imageContainer");
+    imageContainer.classList.remove("show");
+    requestAnimationFrame(() => {
+        imageContainer.innerHTML = "";
 
-      var xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-              console.log("Images loaded for filter: " + filter);
-              imageContainer.innerHTML = this.responseText;
-              requestAnimationFrame(() => {
-                  imageContainer.classList.add("show");
-                  document.querySelectorAll('.row .column .content img').forEach(img => {
-                      img.classList.add('loaded');
-                  });
-                  initLazyLoad(); // 初始化懒加载
-              });
-          }
-      };
-      xhr.open("GET", "vocabulary/" + filter + ".html", true);
-    //   xhr.open("GET", filter + ".html", true);
-      xhr.send();
-  });
+        function loadFromPath(path) {
+            return new Promise((resolve, reject) => {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4) {
+                        if (this.status == 200) {
+                            resolve(this.responseText);
+                        } else {
+                            reject(this.status);
+                        }
+                    }
+                };
+                xhr.open("GET", path, true);
+                xhr.send();
+            });
+        }
+
+        // 尝试从两个路径加载文件
+        var promises = [
+            loadFromPath("vocabulary/" + filter + ".html"),
+            loadFromPath("vocabulary/composite/" + filter + ".html")
+        ];
+
+        Promise.any(promises)
+            .then(response => {
+                console.log("Images loaded for filter: " + filter);
+                imageContainer.innerHTML = response;
+                requestAnimationFrame(() => {
+                    imageContainer.classList.add("show");
+                    document.querySelectorAll('.row .column .content img').forEach(img => {
+                        img.classList.add('loaded');
+                    });
+                    initLazyLoad(); // 初始化懒加载
+                });
+            })
+            .catch(error => {
+                console.error("Failed to load images for filter: " + filter, error);
+            });
+    });
 }
+
 
 
 // 模态框
