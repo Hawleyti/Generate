@@ -131,14 +131,23 @@ fetch('./nav/nav.html')
       oldelem.parentNode.replaceChild(newelem, oldelem);
   });
 
-fetch('./nav/character_Style.html')
-    .then(res => res.text())
-    .then(text => {
-        let oldelem = document.querySelector("script#replace_with_character_Style");
-        let newelem = document.createElement("div");
-        newelem.innerHTML = text;
-        oldelem.parentNode.replaceChild(newelem, oldelem);
-});
+  fetch('./nav/LordJesus.html')
+  .then(res => {
+      if (!res.ok) {
+          throw new Error('Network response was not ok ' + res.statusText);
+      }
+      return res.text();
+  })
+  .then(text => {
+      let oldelem = document.querySelector("script#replace_with_LordJesus");
+      let newelem = document.createElement("div");
+      newelem.innerHTML = text;
+      oldelem.parentNode.replaceChild(newelem, oldelem);
+  })
+  .catch(error => {
+      console.error('Error fetching LordJesus.html:', error);
+  });
+
 fetch('./nav/figure_Style.html')
     .then(res => res.text())
     .then(text => {
