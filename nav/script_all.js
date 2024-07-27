@@ -131,10 +131,10 @@ fetch('./nav/nav.html')
       oldelem.parentNode.replaceChild(newelem, oldelem);
   });
 
-fetch('./nav/character_style.html')
+fetch('./nav/character_Style.html')
     .then(res => res.text())
     .then(text => {
-        let oldelem = document.querySelector("script#replace_with_Character_Style");
+        let oldelem = document.querySelector("script#replace_with_character_Style");
         let newelem = document.createElement("div");
         newelem.innerHTML = text;
         oldelem.parentNode.replaceChild(newelem, oldelem);
