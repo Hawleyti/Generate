@@ -131,6 +131,23 @@ fetch('./nav/nav.html')
       oldelem.parentNode.replaceChild(newelem, oldelem);
   });
 
+fetch('./nav/character_style.html')
+    .then(res => res.text())
+    .then(text => {
+        let oldelem = document.querySelector("script#replace_with_Character_Style");
+        let newelem = document.createElement("div");
+        newelem.innerHTML = text;
+        oldelem.parentNode.replaceChild(newelem, oldelem);
+});
+fetch('./nav/figure_Style.html')
+    .then(res => res.text())
+    .then(text => {
+        let oldelem = document.querySelector("script#replace_with_figure_Style");
+        let newelem = document.createElement("div");
+        newelem.innerHTML = text;
+        oldelem.parentNode.replaceChild(newelem, oldelem);
+});
+
 // 滚动时隐藏和显示导航栏
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {

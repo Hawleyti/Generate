@@ -99,17 +99,15 @@ h4 {
 }
 
 .lick{
-margin: 0 auto;
-/* background-color: #fbf2fc; */
-padding: 10px 5px;
+margin: -4px 0px;
+/* background-color: #dbdbdb; */
+padding: 5px 5px;
 /* max-width: 280px; */
-font-size: 16px;
+font-size: 14px;
 cursor: pointer;
 }
 .lick:hover{
   color: brown;
-  
-
 }
 
 
@@ -118,11 +116,13 @@ cursor: pointer;
   --gap: 0.5em;
   --columns: 6;
   max-width: 79%;
-  margin: 100px auto;
+  margin: 0px auto 100px auto;
   display: column;
   columns: var(--columns);
   gap: var(--gap);
-  /* background-color: aquamarine; */
+  /* background-color: rgba(241, 229, 234, 0.8);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);  */
+  padding: 8px;
 }
 
 .row > * {
@@ -160,9 +160,14 @@ cursor: pointer;
 .row .column .content img {
   max-width: 100%;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-
+  /* transition: opacity 1.5s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; */
 }
+
+/* .row .column .content img:hover{
+  transform: scale(1.07); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+} */
 
 .row .column .content img.loaded {
   opacity: 1;

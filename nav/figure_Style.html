@@ -1,0 +1,43 @@
+
+<style>
+.character {
+  position: relative;
+  background-color: rgb(231, 229, 229);
+  display: flex;
+  justify-content: left;
+  max-width: 78.1%;
+  margin: 0 auto;
+}
+
+.character button {
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  padding: 14px 15px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-right: 2px solid rgba(21, 20, 121, 0.1); /* 添加右侧分割线 */
+}
+
+.character button:last-child {
+  border-right: none; 
+}
+
+.character button:hover {
+  background-color: rgba(144, 238, 144, 0.7);
+  color: black;
+}
+
+</style>
+
+<div class="character">
+  <button id="ABAB" onclick="window.location.href='../Generate/figure_1_Realistic.html'">写实风格</button>
+  <button id="cacb" onclick="window.location.href='../Generate/figure_1_Oil Painting.html'">油画风格</button>
+  <button id="aacb" onclick="window.location.href='../Generate/figure_1_Watercolor.html'">水彩风格</button>
+  <button id="abac" onclick="window.location.href='../Generate/figure_1_Animation and Cartoons.html'">动画/卡通风格</button>
+</div>
+
+  
+
