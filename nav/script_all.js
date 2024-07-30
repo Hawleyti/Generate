@@ -196,7 +196,8 @@ function loadImages(filter) {
         // 尝试从两个路径加载文件
         var promises = [
             loadFromPath("vocabulary/" + filter + ".html"),
-            loadFromPath("vocabulary/composite/" + filter + ".html")
+            loadFromPath("vocabulary/composite/" + filter + ".html"),
+            loadFromPath("vocabulary/posite/" + filter + ".html")
         ];
 
         Promise.any(promises)
@@ -227,7 +228,7 @@ function showModal(event) {
     if (contentDiv) {
         const imgSrc = contentDiv.querySelector('img').src;
         const boxImages = contentDiv.querySelectorAll('#box img');
-        const describeText = contentDiv.querySelector('.describe').innerText;
+        const describeElement = contentDiv.querySelector('.describe');
 
         // 获取所有图片，包括主图片和#box中的图片
         const allImages = [imgSrc, ...Array.from(boxImages).map(img => img.src)];
@@ -258,8 +259,24 @@ function showModal(event) {
             }
         });
 
-        // 设置描述文本
-        document.getElementById('modalText').innerText = describeText;
+        // 设置描述文本或表格
+        const modalText = document.getElementById('modalText');
+        const modalTextTable = document.querySelector('.modalTextTable tbody');
+        const modalTextsDiv = document.querySelector('.modal-texts');
+
+        if (describeElement.tagName.toLowerCase() === 'p') {
+            modalText.style.display = 'block';
+            modalText.innerText = describeElement.innerText;
+            modalTextTable.parentElement.style.display = 'none';
+            modalTextsDiv.style.width = '320px'; // 设置宽度为320px
+            modalTextsDiv.style.backgroundColor = 'rgba(252, 79, 79, 0.1)';
+        } else if (describeElement.tagName.toLowerCase() === 'table') {
+            modalText.style.display = 'none';
+            modalTextTable.parentElement.style.display = 'table';
+            modalTextTable.innerHTML = describeElement.innerHTML;
+            modalTextsDiv.style.width = '350px'; // 设置宽度为400px
+            modalTextsDiv.style.backgroundColor = 'rgba(203, 247, 255, 0.1)';
+        }
 
         // 初始化幻灯片索引和显示幻灯片
         if (allImages.length > 1) {
@@ -284,10 +301,25 @@ function showModal(event) {
 function showImage(thumbnail) {
     const src = thumbnail.src;
     const modalImages = document.querySelectorAll('.modal-images img');
+    const thumbnails = document.querySelectorAll('.thumbnail-container .thumbnail');
+    
     modalImages.forEach((img, i) => {
         if (img.src === src) {
             img.style.display = 'block';
             slideIndex = i;
+
+            // Set the selected thumbnail as active
+            thumbnails.forEach((thumb) => {
+                if (thumb.src === src) {
+                    thumb.style.opacity = '0.5'; // Adjust the opacity as needed
+                    // thumb.style.filter = 'grayscale(100%)';
+                    thumb.style.borderBottom = '5px solid red'; 
+                } else {
+                    thumb.style.opacity = '1'; // Reset opacity
+                    thumb.style.filter = 'none'; // Reset grayscale
+                    thumb.style.borderBottom = 'none'; // Reset grayscale
+                }
+            });
         } else {
             img.style.display = 'none';
         }
@@ -296,11 +328,29 @@ function showImage(thumbnail) {
 
 function showSlide(index) {
     const slides = document.querySelectorAll('.modal-images img');
+    const thumbnails = document.querySelectorAll('.thumbnail-container .thumbnail');
+
     if (index >= slides.length) { slideIndex = 0; }
     if (index < 0) { slideIndex = slides.length - 1; }
 
     slides.forEach((slide, i) => {
-        slide.style.display = (i === slideIndex) ? 'block' : 'none';
+        if (i === slideIndex) {
+            slide.style.display = 'block';
+            // Update the thumbnail styles
+            thumbnails.forEach((thumb) => {
+                if (thumb.src === slide.src) {
+                    thumb.style.opacity = '0.5'; // Set selected thumbnail as active
+                    // thumb.style.filter = 'grayscale(100%)'; 
+                    thumb.style.borderBottom = '5px solid red'; 
+                } else {
+                    thumb.style.opacity = '1'; // Reset opacity
+                    thumb.style.filter = 'none'; // Reset grayscale
+                    thumb.style.borderBottom = 'none'; 
+                }
+            });
+        } else {
+            slide.style.display = 'none';
+        }
     });
 }
 
@@ -313,6 +363,13 @@ function prevSlide() {
     slideIndex--;
     showSlide(slideIndex);
 }
+
+function closeModal() {
+    document.getElementById('myModal').style.display = "none";
+    document.body.classList.remove('modal-open');
+    document.querySelector('#navbar').classList.remove('hidden');
+}
+
 
 
 

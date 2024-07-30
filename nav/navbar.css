@@ -272,7 +272,8 @@ button.next {
   margin-bottom: 10px;
   justify-content: center; /* 缩略图居中对齐 */
   height: auto; 
-  border-top: 2px solid #ccc; /* 添加顶部边框 */
+  /* border-top: 2px solid #ccc;  */
+  max-width: 550px;
 
 }
 
@@ -293,7 +294,6 @@ button.next {
   text-align: left;
   flex: 1; 
   width: 320px;
-  background-color: rgba(252, 79, 79, 0.1);
 
 }
 
@@ -319,12 +319,56 @@ button.next {
   text-decoration: none;
   cursor: pointer;
 }
+.modalTextTable {
+  width: 100%;
+  border-collapse: collapse;
+  /* margin: 10px 0; */
+  font-size: 16px;
+  text-align: left;
+}
+
+.modalTextTable tr,
+.modalTextTable td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.modalTextTable th {
+  background-color: #f2f2f2;
+}
+
+.modalTextTable td:first-child {
+  width: 36%; /* 您可以根据需要调整百分比 */
+}
+
+.Key_words {
+  line-height: 1.5;
+ background-color: rgba(206, 250, 230, 0.2);
+ 
+}
+
+
+
+
+span.close {
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+span.close:hover, span.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* Background blur effect */
 body.modal-open {
   overflow: hidden;
 }
 
-body.modal-open .column,body.modal-open .lie,body.modal-open h2,body.modal-open #myBtnContainer{
+body.modal-open .column,body.modal-open .lie,body.modal-open h2,body.modal-open #myBtnContainer,body.modal-open .character{
   filter: blur(3px);
 }
 body.modal-open #navbar{
