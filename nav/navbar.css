@@ -179,6 +179,10 @@ cursor: pointer;
   background: white;
 }
 
+.row .box{
+  display: none;
+}
+
 
 
 

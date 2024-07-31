@@ -227,7 +227,7 @@ function showModal(event) {
     const contentDiv = event.target.closest('.content');
     if (contentDiv) {
         const imgSrc = contentDiv.querySelector('img').src;
-        const boxImages = contentDiv.querySelectorAll('#box img');
+        const boxImages = contentDiv.querySelectorAll('.box img');
         const describeElement = contentDiv.querySelector('.describe');
 
         // 获取所有图片，包括主图片和#box中的图片
