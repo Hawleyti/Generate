@@ -263,7 +263,7 @@ button.next {
 
 .modal-images img {
   max-width:100%;
-  height: 500px; /* 设置大图的高度 */
+  height: 650px; /* 设置大图的高度 */
   object-fit: contain; /* 保持图片比例 */
   padding: 10px 0px;
   margin: 0;
