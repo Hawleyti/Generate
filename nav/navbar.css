@@ -46,6 +46,14 @@ h2{
 h4 {
   text-align: center;
 }
+.date{
+  margin: 0 auto;
+  width: 79%;
+}
+.date h3{
+  font-size: 20px;
+  padding-top: 10px;
+}
 
 /* Style the buttons */
 .btn {
@@ -387,3 +395,6 @@ body.modal-open #navbar{
   background: url('./Picture/loading.gif') center center no-repeat;
   min-height: 150px; /* 你可以根据图片的大小调整这个高度 */
 }
+/* .content img{
+  cursor: pointer;
+} */
