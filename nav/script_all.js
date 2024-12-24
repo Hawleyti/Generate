@@ -387,3 +387,9 @@ function closeModal() {
     }
   }
   
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll("#myBtnContainer .btn.filter-btn");
+    buttons.forEach((button, index) => {
+      button.textContent = index + 1; // 动态设置序号，从 1 开始
+    });
+  });
