@@ -386,6 +386,8 @@ function closeModal() {
         closeModal();
     }
   }
+
+
   
   document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll("#myBtnContainer .btn.filter-btn");

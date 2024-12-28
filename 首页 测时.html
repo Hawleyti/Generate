@@ -2,12 +2,14 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./nav/script_all copy.js.js"></script>
+<script src="./nav/shouye.js"></script>
 <link rel="stylesheet" href="./nav/front.css">
 </head>
 <body>
 <script id="replace_with_navbar" src="./nav/shouye.js"></script>
 <div class="slideshow-container">
-    <div class="mySlides fade">
+    <div class="mySlides FX">
       <div class="Box">
         <div class="numbertext">1 / 3</div>
         <div class="picture">
@@ -26,7 +28,7 @@
       </div>
     </div>
     
-    <div class="mySlides fade">
+    <div class="mySlides FX">
       <div class="Box">
         <div class="numbertext">2 / 3</div>
         <div class="picture">
@@ -46,7 +48,7 @@
       </div>
     </div>
 
-    <div class="mySlides fade">
+    <div class="mySlides FX">
       <div class="Box">
         <div class="numbertext">3 / 3</div>
         <div class="picture">
@@ -66,7 +68,7 @@
       </div>
 </div>
 
-<div class="mySlides fade">
+<div class="mySlides FX">
   <div class="Box">
   <div class="numbertext">4 / 4</div>
   <div class="picture">
@@ -90,8 +92,8 @@
 
 
 
-<a class="prev" onclick="plusSlides(-1)">❮</a>
-<a class="next" onclick="plusSlides(1)">❯</a>
+<a class="left" onclick="plusSlides(-1)">❮</a>
+<a class="right" onclick="plusSlides(1)">❯</a>
 
 </div>
 
@@ -126,72 +128,36 @@
     </ol>
   </div>
 
-  <table class="styled-table">
-    <thead>
-        <tr>
-            <th>风格化</th>
-            <th>Header 2</th>
-            <th>Header 3</th>
-            <th>Header 4</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Pixar 皮克斯</td>
-            <td>Row 1 Col 2</td>
-            <td>Row 1 Col 3</td>
-            <td>Row 1 Col 4</td>
-        </tr>
-        <tr>
-            <td>Bauhaus 包豪斯</td>
-            <td>Row 2 Col 2</td>
-            <td>Row 2 Col 3</td>
-            <td>Row 2 Col 4</td>
-        </tr>
-        <tr>
-            <td>futuristic 未来主义</td>
-            <td>Row 3 Col 2</td>
-            <td>Row 3 Col 3</td>
-            <td>Row 3 Col 4</td>
-        </tr>
-        <tr>
-            <td>Ghibli 吉卜力工作室</td>
-            <td>Row 4 Col 2</td>
-            <td>Row 4 Col 3</td>
-            <td>Row 4 Col 4</td>
-        </tr>
-    </tbody>
-</table>
-
 </div>
 
 <script>
-let slideIndex = 1;
-showSlides(slideIndex);
+ let picture = 1;
+huandeng(picture);
 
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+  huandeng(picture += n);
 }
 
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+  huandeng(picture = n);
 }
 
-function showSlides(n) {
+function huandeng(n) {
   let i;
   let slides = document.getElementsByClassName("mySlides");
   let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
+  if (n > slides.length) {picture = 1}    
+  if (n < 1) {picture = slides.length}
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";  
   }
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
+  slides[picture-1].style.display = "block";  
+  dots[picture-1].className += " active";
 }
+
 
 </script>
 

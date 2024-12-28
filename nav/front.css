@@ -11,17 +11,17 @@ img {vertical-align: middle;} */
   /* background-color: rgb(61, 76, 212); */
 }
 .picture{
- margin: 0 50px;
+ margin: 0 50px 0 160px;
 }
 .Box{
  background-color: rgb(87, 142, 173);
 }
 
-/* Next & previous buttons */
-.prev, .next {
+/* right & leftious buttons */
+.left, .right {
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 35%;
   width: auto;
   padding: 16px;
   margin-top: -22px;
@@ -33,15 +33,15 @@ img {vertical-align: middle;} */
   user-select: none;
 }
 
-/* Position the "next button" to the right */
-.next {
+/* Position the "right button" to the right */
+.right {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
 
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
+.left:hover, .right:hover {
   background-color: rgba(0,0,0,0.8);
 }
 
@@ -57,7 +57,7 @@ img {vertical-align: middle;} */
   text-align: left;
   display: block;
   background-color: rgb(179, 221, 245);
-  padding-left: 50px;
+  padding-left: 160px;
 
 }
 
@@ -80,13 +80,15 @@ img {vertical-align: middle;} */
 
 .mySlides img {
   width: auto;            /* 确保图片宽高比 */
-  max-width: 24.3%;         /* 调整图片响应式宽度 */
-  height: auto;           /* 保持图片宽高比 */
-  margin: 0 auto;         /* 让每张图片居中 */
+  max-width: 24.3%;        /* 调整图片响应式宽度 */
+  height: auto;            /* 保持图片宽高比 */
+  margin: 0 auto;          /* 让每张图片居中 */
+  max-height: 300px;       /* 限制最大高度为300px */
 }
 
+
 .generate{
-  margin-left: 50px;
+  margin-left: 160px;
 }
 
 /* The dots/bullets/indicators */
@@ -102,12 +104,12 @@ img {vertical-align: middle;} */
 }
 
 .active, .dot:hover {
-  background-color: #717171;
+  background-color: #076858;
 }
 
 /* Fading animation */
-.fade {
-  animation-name: fade;
+.FX {
+  animation-name: FX;
   animation-duration: 1.5s;
 }
 
@@ -148,12 +150,12 @@ img {vertical-align: middle;} */
   cursor: pointer;
 }
 
-@keyframes fade {
+@keyframes FX {
   from {opacity: .4} 
   to {opacity: 1}
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+  .left, .right,.text {font-size: 11px}
 }
