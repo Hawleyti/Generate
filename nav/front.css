@@ -4,13 +4,16 @@ body {font-family: Verdana, sans-serif;}
 .slideshow-container {
   max-width: 100%;
   position: relative;
-  margin: auto;
 }
 .picture{
- width: 100%;
+ width:80%;
  overflow: hidden;
  display: flex;
- margin-left:150px;
+ margin: 0 auto;  
+ 
+
+
+ /* margin-left:150px; */
 
 }
 .Box{
@@ -57,7 +60,7 @@ body {font-family: Verdana, sans-serif;}
   text-align: left;
   display: block;
   background-color: rgb(179, 221, 245);
-  padding-left: 160px;
+  padding-left: 200px;
 
 }
 
@@ -75,14 +78,13 @@ body {font-family: Verdana, sans-serif;}
   width: auto;            /* 确保图片宽高比 */
   /* max-width: 24.3%;       */
   height: auto;            /* 保持图片宽高比 */
-  margin: 0 5px;   
-
-  max-height: 300px;       /* 限制最大高度为300px */
+margin-left: 5px;
+    max-height: 300px;       /* 限制最大高度为300px */
 }
 
 
 .generate{
-  margin-left: 160px;
+  margin-left: 200px;
 }
 
 /* The dots/bullets/indicators */
