@@ -1,17 +1,17 @@
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif;}
-/* .mySlides {display: none}
-img {vertical-align: middle;} */
 
-/* Slideshow container */
 .slideshow-container {
   max-width: 100%;
   position: relative;
   margin: auto;
-  /* background-color: rgb(61, 76, 212); */
 }
 .picture{
- margin: 0 50px 0 160px;
+ width: 100%;
+ overflow: hidden;
+ display: flex;
+ margin-left:150px;
+
 }
 .Box{
  background-color: rgb(87, 142, 173);
@@ -70,19 +70,13 @@ img {vertical-align: middle;} */
   top: 0;
 }
 /* Ensure .slideshow-container centers its content */
-.mySlides {
-  display: flex;
-  justify-content: center; /* 水平居中 */
-  gap: 10px;              /* 图片之间的间距 */
-  width: 100%;            /* 确保容器宽度 */
-  flex-wrap: wrap;        /* 如果屏幕过小，允许图片换行 */
-}
 
 .mySlides img {
   width: auto;            /* 确保图片宽高比 */
-  max-width: 24.3%;        /* 调整图片响应式宽度 */
+  /* max-width: 24.3%;       */
   height: auto;            /* 保持图片宽高比 */
-  margin: 0 auto;          /* 让每张图片居中 */
+  margin: 0 5px;   
+
   max-height: 300px;       /* 限制最大高度为300px */
 }
 
@@ -104,7 +98,7 @@ img {vertical-align: middle;} */
 }
 
 .active, .dot:hover {
-  background-color: #076858;
+  background-color: #5a8880;
 }
 
 /* Fading animation */
@@ -139,6 +133,7 @@ img {vertical-align: middle;} */
 .styled-table tbody tr {
   background-color: #f8f8f8;
   transition: background-color 0.3s ease;
+ 
 }
 
 .styled-table tbody tr:nth-of-type(even) {
@@ -159,3 +154,16 @@ img {vertical-align: middle;} */
 @media only screen and (max-width: 300px) {
   .left, .right,.text {font-size: 11px}
 }
+
+/* @media (max-width: 1750px) {
+  .picture img:nth-of-type(n+5) {
+    display: none;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .picture img:nth-of-type(n+2) {
+    display: none;
+  }
+} */
