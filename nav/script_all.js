@@ -121,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
     initLazyLoad(); // 初始化懒加载
 });
 
+
 // 加载导航栏
 fetch('./nav/nav.html')
   .then(res => res.text())
@@ -395,3 +396,5 @@ function closeModal() {
       button.textContent = index + 1; // 动态设置序号，从 1 开始
     });
   });
+
+  

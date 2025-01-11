@@ -1,13 +1,57 @@
  
-   <div class="box">
+   <!-- <div class="box">
     <img src="https://lh3.googleusercontent.com/d/1ZG3j9h5HNMS9UjCg-m6ltUd1VVN2FMto?authuser=0" alt="灾难">
-  </div>
+  </div> -->
 
  
 
 
 
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Image URL</title>
+  </head>
+  <body>
+    <!-- 图片元素 -->
+    <img 
+      class="lazy lick" 
+      onclick="showModal(event)" 
+      data-id="1KcemJ6gNqBNLDP_7eFDbzXxb6CxIs-Ni" 
+      data-auth="0" 
+      src="https://hawleyti.github.io/Generate/Picture/placeholde.jpg" 
+      alt="主耶稣写实">
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.lazy').forEach(img => {
+          const id = img.getAttribute('data-id');
+          const auth = img.getAttribute('data-auth');
+          const fullURL = `https://lh3.googleusercontent.com/d/${id}?authuser=${auth}`;
+          img.setAttribute('data-src', fullURL);
+          img.setAttribute('src', fullURL); // 动态设置 src
+        });
+      });
+  
+      // 模拟 showModal 函数
+      function showModal(event) {
+        const img = event.target;
+        const dataSrc = img.getAttribute('data-src');
+        console.log(`Opening modal for image: ${dataSrc}`);
+        // 在这里实现模态框显示逻辑
+      }
+    </script>
+  </body>
+  </html>
+
+
  
+
+ 
+  
+  
 
 
 
