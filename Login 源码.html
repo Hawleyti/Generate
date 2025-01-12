@@ -42,8 +42,8 @@
 <body>
     <div class="login-form">
         <h2>Login</h2>
-        <input type="text" id="username" placeholder="用户名" onfocus="clearErrorMessage()">
-        <input type="password" id="password" placeholder="密码" onfocus="clearErrorMessage()">
+        <input type="text" id="username" placeholder="用户名" autocomplete="off" onfocus="clearErrorMessage()">
+        <input type="password" id="password" placeholder="密码" autocomplete="off" onfocus="clearErrorMessage()">
         <button onclick="login()">登录</button>
         <div class="error" id="error-message"></div>
     </div>
