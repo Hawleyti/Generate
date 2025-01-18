@@ -85,41 +85,46 @@ function initLazyLoad() {
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Document loaded");
 
-    var btnContainer = document.getElementById("myBtnContainer");
-    var defaultBtn = btnContainer.querySelector("button[data-default='true']");
+    // 获取所有按钮容器
+    var btnContainers = document.querySelectorAll("[id^='myBtnContainer']");
 
-    if (defaultBtn) {
-        var filter = defaultBtn.getAttribute("data-filter");
-        console.log("Default filter selected: " + filter);
+    btnContainers.forEach(function(btnContainer) {
+        var defaultBtn = btnContainer.querySelector("button[data-default='true']");
 
-        // 加载默认按钮对应的图片内容
-        loadImages(filter);
-        defaultBtn.classList.add("selected");
-        defaultBtn.style.backgroundColor = "lightgreen";
-    }
+        if (defaultBtn) {
+            var filter = defaultBtn.getAttribute("data-filter");
+            console.log("Default filter selected in " + btnContainer.id + ": " + filter);
 
-    btnContainer.addEventListener("click", function(event) {
-        if (event.target.classList.contains("btn")) {
-            var filter = event.target.getAttribute("data-filter");
-            console.log("Filter selected: " + filter);
-
-            // 移除所有按钮的 selected 类
-            var btns = btnContainer.getElementsByClassName("btn");
-            for (var i = 0; i < btns.length; i++) {
-                btns[i].classList.remove("selected");
-                btns[i].style.backgroundColor = ""; // 恢复默认背景色
-            }
-
-            // 添加 selected 类到点击的按钮
-            event.target.classList.add("selected");
-            event.target.style.backgroundColor = "lightgreen"; // 设置点击按钮的背景色
-
+            // 加载默认按钮对应的图片内容
             loadImages(filter);
+            defaultBtn.classList.add("selected");
+            defaultBtn.style.backgroundColor = "lightgreen";
         }
+
+        btnContainer.addEventListener("click", function(event) {
+            if (event.target.classList.contains("btn")) {
+                var filter = event.target.getAttribute("data-filter");
+                console.log("Filter selected in " + btnContainer.id + ": " + filter);
+
+                // 移除所有按钮的 selected 类
+                var btns = btnContainer.getElementsByClassName("btn");
+                for (var i = 0; i < btns.length; i++) {
+                    btns[i].classList.remove("selected");
+                    btns[i].style.backgroundColor = ""; // 恢复默认背景色
+                }
+
+                // 添加 selected 类到点击的按钮
+                event.target.classList.add("selected");
+                event.target.style.backgroundColor = "lightgreen"; // 设置点击按钮的背景色
+
+                loadImages(filter);
+            }
+        });
     });
 
     initLazyLoad(); // 初始化懒加载
 });
+
 
 
 // 加载导航栏
@@ -391,10 +396,14 @@ function closeModal() {
 
   
   document.addEventListener("DOMContentLoaded", () => {
-    const buttons = document.querySelectorAll("#myBtnContainer .btn.filter-btn");
-    buttons.forEach((button, index) => {
-      button.textContent = index + 1; // 动态设置序号，从 1 开始
+    const containers = document.querySelectorAll("[id^='myBtnContainer']"); // 匹配所有以 "myBtnContainer" 开头的容器
+    containers.forEach((container) => {
+      const buttons = container.querySelectorAll(".btn.filter-btn");
+      buttons.forEach((button, index) => {
+        button.textContent = index + 1; // 动态设置序号，从 1 开始
+      });
     });
   });
+  
 
   

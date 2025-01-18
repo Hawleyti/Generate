@@ -3,19 +3,20 @@
 }
 
 
-#myBtnContainer {
+/* 通用样式 */
+[id^="myBtnContainer"] {
   display: flex;
   z-index: 10;
   justify-content: center;
   padding: 10px 0;
-  /* position: fixed; */
   bottom: 0;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.5);
-  border-top: 1px solid #ddd; 
-  /* padding-left: 300px;  */
+  border-top: 1px solid #ddd;
 }
-#myBtnContainer a {
+
+/* 为容器内的链接设置样式 */
+[id^="myBtnContainer"] a {
   color: black;
   padding: 8px 16px;
   margin: 0 4px;
@@ -25,6 +26,11 @@
   background-color: white;
 }
 
+/* 为选中的按钮添加样式 */
+[id^="myBtnContainer"] .btn.selected {
+  background-color: lightgreen;
+  color: black;
+}
 /* #imageContainer {
   margin-left: 130px;
 } */
@@ -398,3 +404,5 @@ body.modal-open #navbar{
 /* .content img{
   cursor: pointer;
 } */
+
+
