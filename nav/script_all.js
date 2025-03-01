@@ -157,17 +157,17 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 });
 
-// 加载 LordJesus.html
-fetch(getGithubFetchPath('LordJesus.html'))
+// 加载 Character_Prayer.html
+fetch(getGithubFetchPath('Character_Prayer.html'))
     .then(res => res.text())
     .then(text => {
-        let oldelem = document.querySelector("script#replace_with_LordJesus");
+        let oldelem = document.querySelector("script#replace_with_Character_Prayer");
         if (oldelem) {
             let newelem = document.createElement("div");
             newelem.innerHTML = text;
             oldelem.parentNode.replaceChild(newelem, oldelem);
         } else {
-            console.error("Error: script#replace_with_LordJesus not found!");
+            console.error("Error: script#replace_with_Character_Prayer not found!");
         }
     })
     .catch(error => {
@@ -233,7 +233,8 @@ function loadImages(filter) {
             loadFromPath("vocabulary/" + filter + ".html"),
             loadFromPath("vocabulary/composite/" + filter + ".html"),
             loadFromPath("vocabulary/posite/" + filter + ".html"),
-            loadFromPath("vocabulary/Jesus/" + filter + ".html")
+            loadFromPath("vocabulary/Jesus/" + filter + ".html"),
+            loadFromPath("vocabulary/figure/" + filter + ".html")
         ];
 
         Promise.any(promises)
