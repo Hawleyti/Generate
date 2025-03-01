@@ -127,17 +127,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+// 计算 GitHub Pages 兼容路径
+function getGithubFetchPath(file) {
+    let basePath = window.location.origin + window.location.pathname.split('/').slice(0, -1).join('/');
+    return basePath + "/nav/" + file;
+}
+
 // 加载导航栏
 document.addEventListener("DOMContentLoaded", function() {
-    let navPath = "";
-  
-    // 获取当前页面的路径深度，确定 fetch 的路径
-    if (window.location.pathname.startsWith("/Jesue/")) {
-        navPath = "../nav/nav.html"; // story.html 在 /Jesue/ 目录，需要返回上一级
-    } else {
-        navPath = "/nav/nav.html";  // index.html 在根目录，直接访问 /nav/
-    }
-  
+    let navPath = "nav/nav.html"; // 直接访问 nav 目录下的 nav.html
+
     fetch(navPath)
         .then(res => {
             if (!res.ok) {
@@ -156,33 +155,42 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error("Error loading nav.html:", error);
         });
-  });  
+});
 
-  fetch('./nav/LordJesus.html')
-  .then(res => {
-      if (!res.ok) {
-          throw new Error('Network response was not ok ' + res.statusText);
-      }
-      return res.text();
-  })
-  .then(text => {
-      let oldelem = document.querySelector("script#replace_with_LordJesus");
-      let newelem = document.createElement("div");
-      newelem.innerHTML = text;
-      oldelem.parentNode.replaceChild(newelem, oldelem);
-  })
-  .catch(error => {
-      console.error('Error fetching LordJesus.html:', error);
-  });
+// 加载 LordJesus.html
+fetch(getGithubFetchPath('LordJesus.html'))
+    .then(res => res.text())
+    .then(text => {
+        let oldelem = document.querySelector("script#replace_with_LordJesus");
+        if (oldelem) {
+            let newelem = document.createElement("div");
+            newelem.innerHTML = text;
+            oldelem.parentNode.replaceChild(newelem, oldelem);
+        } else {
+            console.error("Error: script#replace_with_LordJesus not found!");
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching LordJesus.html:', error);
+    });
 
-fetch('./nav/figure_Style.html')
+// 加载 figure_Style.html
+fetch(getGithubFetchPath('figure_Style.html'))
     .then(res => res.text())
     .then(text => {
         let oldelem = document.querySelector("script#replace_with_figure_Style");
-        let newelem = document.createElement("div");
-        newelem.innerHTML = text;
-        oldelem.parentNode.replaceChild(newelem, oldelem);
-});
+        if (oldelem) {
+            let newelem = document.createElement("div");
+            newelem.innerHTML = text;
+            oldelem.parentNode.replaceChild(newelem, oldelem);
+        } else {
+            console.error("Error: script#replace_with_figure_Style not found!");
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching figure_Style.html:', error);
+    });
+
 
 // 滚动时隐藏和显示导航栏
 var prevScrollpos = window.pageYOffset;
