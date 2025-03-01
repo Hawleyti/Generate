@@ -128,14 +128,35 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // 加载导航栏
-fetch('./nav/nav.html')
-  .then(res => res.text())
-  .then(text => {
-      let oldelem = document.querySelector("script#replace_with_navbar");
-      let newelem = document.createElement("div");
-      newelem.innerHTML = text;
-      oldelem.parentNode.replaceChild(newelem, oldelem);
-  });
+document.addEventListener("DOMContentLoaded", function() {
+    let navPath = "";
+  
+    // 获取当前页面的路径深度，确定 fetch 的路径
+    if (window.location.pathname.startsWith("/Jesue/")) {
+        navPath = "../nav/nav.html"; // story.html 在 /Jesue/ 目录，需要返回上一级
+    } else {
+        navPath = "/nav/nav.html";  // index.html 在根目录，直接访问 /nav/
+    }
+  
+    fetch(navPath)
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.text();
+        })
+        .then(text => {
+            let navContainer = document.querySelector("#replace_with_navbar");
+            if (navContainer) {
+                navContainer.innerHTML = text;
+            } else {
+                console.error("Error: #replace_with_navbar not found!");
+            }
+        })
+        .catch(error => {
+            console.error("Error loading nav.html:", error);
+        });
+  });  
 
   fetch('./nav/LordJesus.html')
   .then(res => {

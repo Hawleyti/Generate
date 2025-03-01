@@ -405,4 +405,13 @@ body.modal-open #navbar{
   cursor: pointer;
 } */
 
+.breadcrumb {
+  font-size: 16px;
+  color: #494949;
+  margin: 0 auto;
+  width: 80%;
+  padding: 10px;
+}
+
+
 
