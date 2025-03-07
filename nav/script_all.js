@@ -231,7 +231,6 @@ function loadImages(filter) {
         // 尝试从两个路径加载文件
         var promises = [
             loadFromPath("vocabulary/" + filter + ".html"),
-            loadFromPath("vocabulary/composite/" + filter + ".html"),
             loadFromPath("vocabulary/posite/" + filter + ".html"),
             loadFromPath("vocabulary/Jesus/" + filter + ".html"),
             loadFromPath("vocabulary/figure/" + filter + ".html")
