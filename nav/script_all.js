@@ -233,7 +233,8 @@ function loadImages(filter) {
             loadFromPath("vocabulary/" + filter + ".html"),
             loadFromPath("vocabulary/posite/" + filter + ".html"),
             loadFromPath("vocabulary/Jesus/" + filter + ".html"),
-            loadFromPath("vocabulary/figure/" + filter + ".html")
+            loadFromPath("vocabulary/figure/" + filter + ".html"),
+            loadFromPath("vocabulary/zainan/" + filter + ".html")
         ];
 
         Promise.any(promises)
