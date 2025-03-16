@@ -416,5 +416,17 @@ body.modal-open #navbar{
   padding: 10px;
 }
 
+/* 首页分页显示控制 */
+.prevPage, .nextPage {
+  cursor: pointer; /* 鼠标悬停时变成手形 */
+  padding: 8px 12px; /* 添加一些内边距 */
+  text-decoration: none; /* 取消默认的超链接样式 */
+  color: black; /* 文字颜色 */
+  transition: background-color 0.3s ease, color 0.3s ease; /* 平滑过渡效果 */
+}
 
-
+.prevPage:hover, .nextPage:hover {
+  background-color: lightgray; /* 悬停时背景变浅灰色 */
+  color: white; /* 文字颜色变白 */
+  border-radius: 5px; /* 圆角 */
+}

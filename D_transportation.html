@@ -5,14 +5,14 @@
     <script src="./nav/script_all.js"></script>
     <link rel="stylesheet" href="./nav/navbar.css">
     <link rel="icon" href="favicon.png" type="我的网站图标">
-    <!-- <script>
+    <script>
         
         if (sessionStorage.getItem('authenticated') !== 'true') {
           window.location.href = 'Login.html';
       }
-  </script> -->
+  </script>
      <style>
-        #HH{
+        #HH,#H03{
           background-color: rgb(192, 191, 191);
           color: rgb(0, 0, 0);
         }
@@ -20,13 +20,13 @@
 </head>
 <body oncontextmenu="return false;">
     <div id="replace_with_navbar"></div>
+    <nav class="breadcrumb">当前位置 <span >&gt</span> <span>风景</span><span >&gt</span> <span>交通</span> </nav>
 
     <div id="imageContainer" class="fade"></div>
 
     <div id="myBtnContainer">
         <a>&laquo;</a>
-        <button class="btn filter-btn active" data-filter="landscape_2" data-default="true">1</button>
-        <button class="btn filter-btn active" data-filter="landscape_1">1</button>
+        <button class="btn filter-btn active" data-filter="transportation" data-default="true">1</button>
         <a>&raquo;</a>
     </div>
 

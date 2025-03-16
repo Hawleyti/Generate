@@ -234,7 +234,8 @@ function loadImages(filter) {
             loadFromPath("vocabulary/posite/" + filter + ".html"),
             loadFromPath("vocabulary/Jesus/" + filter + ".html"),
             loadFromPath("vocabulary/figure/" + filter + ".html"),
-            loadFromPath("vocabulary/zainan/" + filter + ".html")
+            loadFromPath("vocabulary/zainan/" + filter + ".html"),
+            loadFromPath("vocabulary/FengJing/" + filter + ".html"),
         ];
 
         Promise.any(promises)
@@ -436,5 +437,52 @@ function closeModal() {
     });
   });
   
+// 控制首页分页区
+document.addEventListener("DOMContentLoaded", function () {
+    const btnContainers = document.querySelectorAll("#myBtnContainer, #myBtnContainer2"); 
+    const pageButtons = btnContainers[0].querySelectorAll(".filter-btn");
+    const prevButtons = document.querySelectorAll(".prevPage");
+    const nextButtons = document.querySelectorAll(".nextPage");
 
+    let currentIndex = 0; // 追踪当前页索引
+    const maxVisible = 5; // 只显示5个分页按钮
+
+    function updatePagination() {
+        pageButtons.forEach((btn, index) => {
+            if (index >= currentIndex && index < currentIndex + maxVisible) {
+                btn.style.display = "inline-block";
+            } else {
+                btn.style.display = "none";
+            }
+        });
+
+        // 同步两个分页栏
+        btnContainers.forEach(container => {
+            const buttons = container.querySelectorAll(".filter-btn");
+            buttons.forEach((btn, index) => {
+                btn.style.display = index >= currentIndex && index < currentIndex + maxVisible ? "inline-block" : "none";
+            });
+        });
+    }
+
+    prevButtons.forEach(prev => {
+        prev.addEventListener("click", function () {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updatePagination();
+            }
+        });
+    });
+
+    nextButtons.forEach(next => {
+        next.addEventListener("click", function () {
+            if (currentIndex + maxVisible < pageButtons.length) {
+                currentIndex++;
+                updatePagination();
+            }
+        });
+    });
+
+    updatePagination(); // 初始化分页显示
+});
   
