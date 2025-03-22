@@ -1,0 +1,46 @@
+
+<style>
+.character {
+  position: relative;
+  background-color: rgb(231, 229, 229);
+  display: flex;
+  justify-content: left;
+  max-width: 78.1%;
+  margin: 0 auto;
+}
+
+.character button {
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  padding: 14px 15px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-right: 2px solid rgba(21, 20, 121, 0.1); 
+}
+
+.character button:last-child {
+  border-right: none; 
+}
+
+.character button:hover {
+  background-color: rgba(144, 238, 144, 0.7);
+  color: black;
+}
+
+</style>
+
+<div class="character">
+  <button id="L001" onclick="window.location.href='../Generate/F_Bible.html'">圣经类</button>
+  <button id="L002" onclick="window.location.href='../Generate/F_Church.html'">教堂类</button>
+  <button id="L003" onclick="window.location.href='../Generate/F_cross.html'">十字架类</button>
+  <button id="L004" onclick="window.location.href='../Generate/F_Various_supplies.html'">各种用品类</button>
+  <button id="L005" onclick="window.location.href='../Generate/F_Simple_background.html'">简约背景</button>
+  <button id="L006" onclick="window.location.href='../Generate/F_Small_decoration.html'">小装饰</button>
+ 
+</div>
+
+  
+

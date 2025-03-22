@@ -173,6 +173,22 @@ fetch(getGithubFetchPath('Character_Prayer.html'))
     .catch(error => {
         console.error('Error fetching LordJesus.html:', error);
     });
+// 加载 xiaoyuansu.html
+fetch(getGithubFetchPath('xiaoyuansu.html'))
+    .then(res => res.text())
+    .then(text => {
+        let oldelem = document.querySelector("script#replace_with_xiaoyuansu");
+        if (oldelem) {
+            let newelem = document.createElement("div");
+            newelem.innerHTML = text;
+            oldelem.parentNode.replaceChild(newelem, oldelem);
+        } else {
+            console.error("Error: script#replace_with_xiaoyuansu not found!");
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching xiaoyuansu.html:', error);
+    });
 
 // 加载 figure_Style.html
 fetch(getGithubFetchPath('figure_Style.html'))
@@ -237,6 +253,7 @@ function loadImages(filter) {
             loadFromPath("vocabulary/zainan/" + filter + ".html"),
             loadFromPath("vocabulary/FengJing/" + filter + ".html"),
             loadFromPath("vocabulary/dongwu/" + filter + ".html"),
+            loadFromPath("vocabulary/yuansu/" + filter + ".html")
         ];
 
         Promise.any(promises)
