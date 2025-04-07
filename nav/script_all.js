@@ -253,7 +253,7 @@ function loadImages(filter) {
             loadFromPath("vocabulary/zainan/" + filter + ".html"),
             loadFromPath("vocabulary/FengJing/" + filter + ".html"),
             loadFromPath("vocabulary/dongwu/" + filter + ".html"),
-            loadFromPath("vocabulary/dongwu/" + filter + ".html"),
+            loadFromPath("vocabulary/yuansu/" + filter + ".html"),
             loadFromPath("vocabulary/yuyi/" + filter + ".html")
         ];
 
